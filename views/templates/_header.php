@@ -1,3 +1,4 @@
+<?php require '../a4_php_eval/models/functions.fn.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,21 +11,29 @@
 </head>
 <body>
 	<header>
+        <?php if(internauteEstConnecte()) : ?>
         <ul id="membreDropdown" class="dropdown-content">
             <li><a href='profil.php'>Profil</a></li>
             <li><a href='javascript:void(0);'>Panier</a></li>
+            <?php if(internauteEstConnecteEtEstAdmin()) : ?>
             <li><a href='javascript:void(0);'>Admin</a></li>
+            <?php endif; ?>
             <li class="divider"></li>
-            <li><a href='javascript:void(0);'>Me déconnecter</a></li>
+            <li><a href='signIn.php?action=logOut'>Me déconnecter</a></li>
         </ul>
+        <?php endif; ?>
         <nav>
             <div class="nav-wrapper grey darken-3">
                 <a href='index.php' class="brand-logo">Lokisalle</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <?php if(!internauteEstConnecte()) : ?>
                     <li><a href='signUp.php'>Inscription</a></li>
                     <li><a href='signIn.php'>Connexion</a></li>
+                    <?php endif; ?>
                     <li><a>Boutique</a></li>
+                    <?php if(internauteEstConnecte()) : ?>
                     <li><a href='javascript:void(0);' class="dropdown-trigger" data-target="membreDropdown"><i class="left material-icons">perm_identity</i></a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </nav>
