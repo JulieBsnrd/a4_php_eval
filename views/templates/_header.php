@@ -1,4 +1,4 @@
-<?php require '../a4_php_eval/models/functions.fn.php'; ?>
+<?php require_once '../a4_php_eval/models/functions.fn.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>

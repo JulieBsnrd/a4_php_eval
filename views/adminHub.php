@@ -37,7 +37,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Gestion des produits</h5>
                     <p class="card-text">Cliquez ici si vous souhaitez ajouter, voir, modifier ou supprimer un produit.</p>
-                    <a href="#" class="btn btn-primary">Gérer les produits</a>
+                    <a href="adminProduits.php" class="btn btn-primary">Gérer les produits</a>
                 </div>
             </div>
         </div>
