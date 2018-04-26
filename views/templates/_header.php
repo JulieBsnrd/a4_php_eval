@@ -18,9 +18,9 @@
         </ul>
         <nav>
             <div class="nav-wrapper grey darken-3">
-                <a href='javascript:void(0);' class="brand-logo">Accueil</a>
+                <a href='index.php' class="brand-logo">Accueil</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href='javascript:void(0);'>Inscription</a></li>
+                    <li><a href='signIn.php'>Inscription</a></li>
                     <li><a href='javascript:void(0);'>Connexion</a></li>
                     <li><a>Boutique</a></li>
                     <li><a href='javascript:void(0);' class="dropdown-trigger" data-target="membreDropdown"><i class="left material-icons">perm_identity</i></a></li>
@@ -28,3 +28,17 @@
             </div>
         </nav>
     </header>
+    <div class="row">
+		<?php
+		if(isset($error) && $error){
+			echo '<div class="col s12 red lighten-1">';
+			echo '<p class="center-align">'.$error.'</p>';
+			echo '</div>';
+		}
+		if(isset($quote)){
+			echo '<div class="col s12 '.$quote['class'].'">';
+			echo '<p class="center-align">'.$quote['content'].'</p>';
+			echo '</div>';
+		}
+		?>
+	</div>

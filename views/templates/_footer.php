@@ -1,6 +1,13 @@
 <footer class="page-footer grey darken-3">
     <div class="container">
-
+        <div class="row">
+            <div class="col s12">
+                <a href="">mentions légales</a>
+            </div>
+            <div class="col s12">
+                <a href="">Conditions générales de ventes</a>
+            </div>
+        </div>
     </div>
     <div class="footer-copyright">
         <div class="container">
