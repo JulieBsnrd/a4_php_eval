@@ -29,17 +29,18 @@
             </div>
         </nav>
     </header>
-    <div class="row">
-		<?php
-		if(isset($error) && $error){
-			echo '<div class="col s12 red lighten-1">';
-			echo '<p class="center-align">'.$error.'</p>';
-			echo '</div>';
-		}
-		if(isset($quote)){
-			echo '<div class="col s12 '.$quote['class'].'">';
-			echo '<p class="center-align">'.$quote['content'].'</p>';
-			echo '</div>';
-		}
-		?>
-	</div>
+    <main>
+	    <div class="row">
+			<?php
+			if(isset($error) && $error){
+				echo '<div class="col s12 red lighten-1">';
+				echo '<p class="center-align">'.$error.'</p>';
+				echo '</div>';
+			}
+			if(isset($quote)){
+				echo '<div class="col s12 '.$quote['class'].'">';
+				echo '<p class="center-align">'.$quote['content'].'</p>';
+				echo '</div>';
+			}
+			?>
+		</div>

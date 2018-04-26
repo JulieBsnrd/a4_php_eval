@@ -3,10 +3,10 @@ session_start();
 
 require 'config/config.php';
 require 'models/functions.fn.php';
-require 'models/MembresModel.php';
+//require 'models/AdminModel.php';
 
 //Create membre
-if(!empty($_POST)){
+/*if(!empty($_POST)){
 	$error = validator();
 
 	if(!$error){
@@ -15,10 +15,10 @@ if(!empty($_POST)){
 			$quote = ["class" => 'green', "content" => 'Utilisateur ajouté avec succès'];
 		}
 	}
-}
+}*/
 
 require 'views/templates/_header.php';
-require 'views/signIn.php';
+require 'views/admin/index.php';
 require 'views/templates/_footer.php';
 
 ?>
