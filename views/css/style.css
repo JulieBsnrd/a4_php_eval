@@ -7,3 +7,13 @@ body{
 main{
     flex: 1 0 auto;
 }
+
+.main-content{
+    min-height: 100%;
+}
+
+footer{
+    position:absolute;
+    width:100%;
+    bottom:0;
+}
