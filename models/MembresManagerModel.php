@@ -54,12 +54,4 @@ function delete($db, $id){
 	return true;
 }
 
-function setAdmin($db, $id){
-	/*$sql = "UPDATE membre SET statut=:statut WHERE id=:id";
-	$sth = $db->prepare($sql);
-	$sth->bindParam("id", $_POST['id']);
-	$sth->bindParam("statut", $_POST['statut']);
-	$sth->execute();*/
-}
-
 ?>
