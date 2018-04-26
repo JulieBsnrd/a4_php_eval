@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="center-align">
-			<h5><?php echo $membre['pseudo'] ?></h5>
+			<h5><?= $membre['pseudo'] ?></h5>
 		</div>
 	</div>
 	<div class="row">
@@ -11,7 +11,7 @@
 				<div class="col s6">
 					<p>
 						<label>
-				      		<input name="civilite" value="m" type="radio" <?php echo($membre['civilite']) == "m" ? 'checked' : '' ?>/>
+				      		<input name="civilite" value="m" type="radio" <?= ($membre['civilite']) == "m" ? 'checked' : '' ?>/>
 				      		<span>M</span>
 				    	</label>
 			    	</p>
@@ -19,7 +19,7 @@
 				<div class="col s6">
 					<p>
 						<label>
-				      		<input name="civilite" value="f" type="radio" <?php echo($membre['civilite']) == "f" ? 'checked' : '' ?>/>
+				      		<input name="civilite" value="f" type="radio" <?= ($membre['civilite']) == "f" ? 'checked' : '' ?>/>
 				      		<span>F</span>
 				    	</label>
 			    	</p>
@@ -27,21 +27,21 @@
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
-		          	<input id="prenom" type="text" class="validate" name="prenom" value="<?php echo $membre['prenom'] ?>">
+		          	<input id="prenom" type="text" class="validate" name="prenom" value="<?= $membre['prenom'] ?>">
 		          	<label for="prenom">Prénom</label>
 		        </div>
 		        <div class="input-field col s6">
-		          	<input id="nom" type="text" class="validate" name="nom" value="<?php echo $membre['nom'] ?>">
+		          	<input id="nom" type="text" class="validate" name="nom" value="<?=  $membre['nom'] ?>">
 		          	<label for="nom">Nom</label>
 		        </div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
-					<input id="pseudo" type="text" class="validate" name="pseudo" value="<?php echo $membre['pseudo'] ?>">
+					<input id="pseudo" type="text" class="validate" name="pseudo" value="<?= $membre['pseudo'] ?>">
 			        <label for="pseudo">Pseudo</label>
 				</div>
 				<div class="input-field col s12">
-			        	<input id="email" type="email" class="validate" name="email" value="<?php echo $membre['email'] ?>">
+			        	<input id="email" type="email" class="validate" name="email" value="<?= $membre['email'] ?>">
 			        	<label for="email">Email</label>
 		        </div>
 				<div class="input-field col s12">
