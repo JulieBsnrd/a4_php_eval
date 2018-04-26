@@ -13,7 +13,7 @@
 			</div>
 			<div class="col s4">
 				<div class="row">
-					<a href="adminMembres.php?id=<?= $membre['id'] ?>" class="btn green waves-effect waves-light">Editer
+					<a href="adminMembres.php?id=<?= $membre['id'] ?>&action=get" class="btn green waves-effect waves-light">Editer
 						<i class="material-icons right">mode_edit</i>
 					</a>
 				</div>
