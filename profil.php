@@ -8,10 +8,8 @@
 require '../a4_php_eval/models/functions.fn.php';
 
 //--------------------------------- TRAITEMENTS PHP ---------------------------------//
-if(!internauteEstConnecte()) header("location:connexion.php");
+if(!internauteEstConnecte()) header("location:signIn.php");
 //debug($_SESSION);
-
-
 
 //--------------------------------- AFFICHAGE HTML ---------------------------------//
 require 'views/templates/_header.php';

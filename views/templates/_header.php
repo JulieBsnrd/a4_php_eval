@@ -12,8 +12,9 @@
 	<header>
         <ul id="membreDropdown" class="dropdown-content">
             <li><a href='profil.php'>Profil</a></li>
-            <li><a href='javascript:void(0);'>Panier</a></li>
-            <li><a href='javascript:void(0);'>Admin</a></li>
+            <?php if(isset($_SESSION['membre']['statut']) && $_SESSION['membre']['statut'] == "1"): ?>
+            	<li><a href='adminMembres.php'>Admin</a></li>
+        	<?php endif; ?>
             <li class="divider"></li>
             <li><a href='javascript:void(0);'>Me déconnecter</a></li>
         </ul>
@@ -23,8 +24,10 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href='signUp.php'>Inscription</a></li>
                     <li><a href='signIn.php'>Connexion</a></li>
-                    <li><a>Boutique</a></li>
-                    <li><a href='javascript:void(0);' class="dropdown-trigger" data-target="membreDropdown"><i class="left material-icons">perm_identity</i></a></li>
+                    <li><a href="boutique.php">Boutique</a></li>
+                    <?php if(isset($_SESSION['membre'])): ?>
+                    	<li><a href='javascript:void(0);' class="dropdown-trigger" data-target="membreDropdown"><i class="left material-icons">perm_identity</i><?= $_SESSION['membre']['pseudo'] ?></a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </nav>
