@@ -1,6 +1,6 @@
 <?php
 
-function validator(){
+function validatorSignUp(){
 	if(empty($_POST['pseudo']))
 		return 'Veuillez insérer un pseudo';
 
@@ -39,7 +39,24 @@ function validator(){
 	else return false;
 }
 
-function signIn($db){
+function validatorSignIn(){
+    if(empty($_POST['pseudo']))
+        return 'Veuillez insérer un pseudo';
+
+    elseif(strlen($_POST['pseudo']) > 20 || strlen($_POST['pseudo']) < 5)
+        return 'Votre pseudo doit être compris entre 5 et 20 caractères';
+    elseif(!preg_match('/^[a-z\d]{5,20}$/i', $_POST['pseudo']))
+        return 'Pseudo invalide';
+
+    elseif(empty($_POST['mdp']))
+        return 'Veuillez rentrer un mot de passe';
+    elseif(strlen($_POST['mdp']) < 8)
+        return 'Votre mot de passe doit faire au minimum 8 caractères';
+
+    else return false;
+}
+
+function signUp($db){
 	$sql = "INSERT INTO membre SET pseudo = :pseudo, mdp = :mdp, nom = :nom, prenom = :prenom, email = :email, civilite = :civilite, date_enregistrement = :date_enregistrement";
 	$req = $db->prepare($sql);
 	$req->execute(array(
@@ -51,7 +68,27 @@ function signIn($db){
 		':civilite' => $_POST['civilite'],
 		':date_enregistrement' => date('Y-m-d H:i:s')
 	));
-	return true;
+    if ($result = $req->fetch()) {
+        return true;
+    } else {
+        return false;
+    }
 }
+
+function signIn($db){
+    $sql = "SELECT * FROM membre WHERE pseudo = :pseudo AND mdp = :mdp";
+    $req = $db->prepare($sql);
+    $req->execute(array(
+        ':pseudo' => $_POST['pseudo'],
+        ':mdp' => password_hash($_POST['mdp'], PASSWORD_DEFAULT)
+    ));
+    if ($result = $req->fetch()) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
 
 ?>

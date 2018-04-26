@@ -21,8 +21,8 @@
             <div class="nav-wrapper grey darken-3">
                 <a href='index.php' class="brand-logo">Lokisalle</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href='signIn.php'>Inscription</a></li>
-                    <li><a href='javascript:void(0);'>Connexion</a></li>
+                    <li><a href='signUp.php'>Inscription</a></li>
+                    <li><a href='signIn.php'>Connexion</a></li>
                     <li><a>Boutique</a></li>
                     <li><a href='javascript:void(0);' class="dropdown-trigger" data-target="membreDropdown"><i class="left material-icons">perm_identity</i></a></li>
                 </ul>
