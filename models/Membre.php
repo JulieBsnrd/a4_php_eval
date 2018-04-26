@@ -1,5 +1,6 @@
 <?php 
-require '../config/config.php';
+
+require 'DB.php';
 
 class Membre 
 {
@@ -38,6 +39,8 @@ class Membre
 
 	public function all()
 	{
+		$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT id, pseudo, nom, prenom, email, civilite, statut, date_enregistrement FROM membre');
 	    $req->execute();
 
@@ -50,6 +53,8 @@ class Membre
 
 	public function find($id)
 	{
+		$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT id, pseudo, nom, prenom, email, civilite, statut, date_enregistrement FROM membre WHERE id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
@@ -60,13 +65,15 @@ class Membre
 	    return $membre;
 	}
 
-	function update($id)
+	public function update($id)
 	{
 
 	}
 
-	function delete($id)
+	public function delete($id)
 	{
+		$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('DELETE FROM membre WHERE id = ?');
 		$req->bindParam(':id', $id);
 		$req->execute();
@@ -149,6 +156,8 @@ class Membre
 
 	public function signUp()
 	{
+		$db = new DB();
+		$db = $db->connect();
 		$sql = "INSERT INTO membre SET pseudo = :pseudo, mdp = :mdp, nom = :nom, prenom = :prenom, email = :email, civilite = :civilite, date_enregistrement = :date_enregistrement";
 		$req = $db->prepare($sql);
 		$req->execute(array(
@@ -169,6 +178,8 @@ class Membre
 
 	public function signIn()
 	{
+		$db = new DB();
+		$db = $db->connect();
 	    $sql = "SELECT * FROM membre WHERE pseudo = :pseudo AND mdp = :mdp";
 	    $req = $db->prepare($sql);
 	    $req->execute(array(

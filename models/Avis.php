@@ -1,5 +1,7 @@
 <?php
 
+require 'DB.php';
+
 class Avis
 {
 	/** var int */
@@ -33,6 +35,8 @@ class Avis
 
     public function all()
     {
+    	$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT * FROM avis');
 	    $req->execute();
 
@@ -45,6 +49,8 @@ class Avis
 
     public function find($id)
     {
+    	$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT * FROM avis WHERE id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
@@ -57,6 +63,8 @@ class Avis
 
     public function findAllByUser($id_membre)
     {
+    	$db = new DB();
+		$db = $db->connect();
     	$req = $db->prepare('SELECT * FROM avis WHERE id_membre = :id_membre');
 	    $req->bindParam(':id_membre', $id_membre);
 	    $req->execute();
@@ -75,6 +83,8 @@ class Avis
 
     public function delete($id)
     {
+    	$db = new DB();
+		$db = $db->connect();
     	$req = $db->prepare('DELETE FROM avis WHERE id = ?');
 		$req->bindParam(':id', $id);
 		$req->execute();

@@ -1,5 +1,7 @@
 <?php
 
+require 'DB.php';
+
 class Commande
 {
 	/** var int */
@@ -25,6 +27,8 @@ class Commande
 
     public function all()
     {
+    	$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT * FROM commande');
 	    $req->execute();
 
@@ -37,6 +41,8 @@ class Commande
 
     public function find($id)
     {
+    	$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT * FROM commande WHERE id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
@@ -49,6 +55,8 @@ class Commande
 
     public function findAllByUser($id_membre)
     {
+    	$db = new DB();
+		$db = $db->connect();
     	$req = $db->prepare('SELECT * FROM commande WHERE id_membre = :id_membre');
 	    $req->bindParam(':id_membre', $id_membre);
 	    $req->execute();
@@ -62,6 +70,8 @@ class Commande
 
     public function delete($id)
     {
+    	$db = new DB();
+		$db = $db->connect();
     	$req = $db->prepare('DELETE FROM commande WHERE id = ?');
 		$req->bindParam(':id', $id);
 		$req->execute();

@@ -3,9 +3,10 @@ session_start();
 
 require '../config/config.php';
 
-require('../models/SallesModel.php');
+require '../models/Salle.php';
 
-$salles = getAll($db);
+
+$salle = Salle::all();
 
 require('../views/salles/liste_salles.php');
 

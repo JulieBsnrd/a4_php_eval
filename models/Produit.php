@@ -1,5 +1,7 @@
 <?php
 
+require 'DB.php';
+
 class Produit 
 {
 	/** var int */
@@ -33,6 +35,8 @@ class Produit
 
     public function all()
     {
+    	$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT * FROM produit');
 	    $req->execute();
 
@@ -45,6 +49,8 @@ class Produit
 
 	public function find($id)
 	{
+		$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT * FROM produit WHERE id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
@@ -62,6 +68,8 @@ class Produit
 
 	public function delete($id)
 	{
+		$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('DELETE FROM produit WHERE id = ?');
 		$req->bindParam(':id', $id);
 		$req->execute();
