@@ -11,11 +11,12 @@ if(!empty($_POST)){
 
 	if(!$error){
 		$connect = signIn($db);
-		var_dump($connect);
-        print_r($connect);
+		//var_dump($connect);
+        //print_r($connect);
 
 		if($connect){
             $quote = ["class" => 'green', "content" => 'Vous êtes bien connecté.'];
+
 				}
 				else{
 					$error = 'Le couple email / mot de passe est incorrect';

@@ -1,5 +1,6 @@
 <?php
 
+
 function validatorSignUp(){
 	if(empty($_POST['pseudo']))
 		return 'Veuillez insérer un pseudo';
@@ -80,6 +81,15 @@ function signIn($db){
     if ($result = $req->fetch(PDO::FETCH_ASSOC)) {
         if(password_verify($_POST['mdp'], $result['mdp']))
         {
+            foreach ($result as $key => $value) {
+                if ( $key != 'mdp' ) {
+                    $_SESSION['membre'][$key] = $value;
+                }
+            }
+
+            header("location:views/profil.php");
+            // Enregistrement dans la session PHP de l'utilisateur
+            //Session::set('user', $user_data);
             return true;
         }
         else
