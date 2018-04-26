@@ -11,7 +11,7 @@
 <body>
 	<header>
         <ul id="membreDropdown" class="dropdown-content">
-            <li><a href='javascript:void(0);'>Profil</a></li>
+            <li><a href='profil.php'>Profil</a></li>
             <li><a href='javascript:void(0);'>Panier</a></li>
             <li><a href='javascript:void(0);'>Admin</a></li>
             <li class="divider"></li>

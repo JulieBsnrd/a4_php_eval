@@ -88,7 +88,7 @@ function signIn($db){
                 }
             }
 
-            header("location:views/profil.php");
+            header("location:profil.php");
             // Enregistrement dans la session PHP de l'utilisateur
             //Session::set('user', $user_data);
             return true;
