@@ -21,7 +21,7 @@ function getOne($db, $produitId)
     return $produit;
 }
 
-function create()
+function create($db)
 {
 	$sql = "INSERT INTO produit SET id_salle = :id_salle, date_arrivee = :date_arrivee, date_depart = :date_depart, prix = :prix, etat = :etat";
 	$req = $db->prepare($sql);

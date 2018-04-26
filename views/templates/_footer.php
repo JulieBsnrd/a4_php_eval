@@ -24,6 +24,7 @@
         $('.sidenav').sidenav();
         $('.modal').modal();
         $(".dropdown-trigger").dropdown();
+        $('.datepicker').datepicker();
     });
 </script>
 </body>
