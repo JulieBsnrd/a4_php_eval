@@ -1,17 +1,19 @@
 <div class="container">
 	<div class="row">
 		<h5>Gestions des membres</h5>
+		<a href="adminMembres.php?path=create" class="btn blue">Ajouter un utilisateur</a>
 	</div>
 	<div class="row">
 		<?php foreach($membres as $membre) : ?>
 			<div class="col s8">
 				<h6><?php echo $membre['nom'].' '.$membre['prenom'].' ('.$membre['pseudo'].')'; ?></h6>
+				<p>Admin : <?= $membre['statut'] == "1" ? "oui" : "non"; ?></p>
 				<p>Email : <?php echo $membre['email'] ?></p>
 				<p>Créer le : <?php echo $membre['date_enregistrement'] ?></p>
 			</div>
 			<div class="col s4">
 				<div class="row">
-					<a href="adminMembres.php?id=<?php echo $membre['id'] ?>" class="btn green waves-effect waves-light">Editer
+					<a href="adminMembres.php?id=<?= $membre['id'] ?>" class="btn green waves-effect waves-light">Editer
 						<i class="material-icons right">mode_edit</i>
 					</a>
 				</div>

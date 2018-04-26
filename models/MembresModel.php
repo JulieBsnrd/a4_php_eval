@@ -78,6 +78,7 @@ function signIn($db){
         ':pseudo' => $_POST['pseudo']
     ));
     if ($result = $req->fetch(PDO::FETCH_ASSOC)) {
+    	//azerty 123456789
         if(password_verify($_POST['mdp'], $result['mdp']))
         {
             return true;
