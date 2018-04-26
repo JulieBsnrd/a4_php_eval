@@ -6,7 +6,4 @@
  * Time: 17:09
  */
 
-
-require 'views/templates/_header.php';
 require 'views/adminHub.php';
-require 'views/templates/_footer.php';

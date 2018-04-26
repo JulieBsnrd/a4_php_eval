@@ -45,7 +45,6 @@ class Salle
 	    $this->photo = $photo;
     }
 
-
 	public static function all()
 	{
 		$db = new DB();

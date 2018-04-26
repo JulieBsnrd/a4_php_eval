@@ -1,3 +1,7 @@
+<?php
+include ('views/templates/_header.php');
+?>
+
 <div class="container">
 	<div class="row">
 		<h4 class="center-align">Boutique</h4>
@@ -21,3 +25,7 @@
 		<?php endforeach; ?>
 	</div>
 </div>
+
+<?php
+include ('views/templates/_footer.php');
+?>

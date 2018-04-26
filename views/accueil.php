@@ -1,6 +1,7 @@
 <?php
-
+include ('views/templates/_header.php');
 ?>
+
 <div class="main-content blc">
     <div class="ctn">
         <div class="lgn">
@@ -24,3 +25,7 @@
         </div>
     </div>
 </div>
+
+<?php
+include ('views/templates/_footer.php');
+?>

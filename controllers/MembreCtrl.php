@@ -17,7 +17,6 @@ if(!empty($_POST))
 //Should throw away if not admin
 $membres = getAll($db);
 
-require 'views/templates/_header.php';
 if(isset($_GET['id']) && !empty($_GET['id'])){
 	$membre = get($db, $_GET['id']);
 	require 'views/admin/gestionMembre.php';
@@ -25,6 +24,5 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 else{
 	require 'views/admin/gestionMembres.php';
 }
-require 'views/templates/_footer.php';
 
 ?>

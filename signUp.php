@@ -35,8 +35,6 @@ if(!empty($_POST)){
 	}*/
 }
 
-require 'views/templates/_header.php';
 require 'views/signUp.php';
-require 'views/templates/_footer.php';
 
 ?>
