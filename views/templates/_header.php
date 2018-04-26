@@ -19,7 +19,7 @@
         </ul>
         <nav>
             <div class="nav-wrapper grey darken-3">
-                <a href='index.php' class="brand-logo">Accueil</a>
+                <a href='index.php' class="brand-logo">Lokisalle</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href='signIn.php'>Inscription</a></li>
                     <li><a href='javascript:void(0);'>Connexion</a></li>
