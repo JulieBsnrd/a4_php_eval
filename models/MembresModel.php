@@ -68,22 +68,24 @@ function signUp($db){
 		':civilite' => $_POST['civilite'],
 		':date_enregistrement' => date('Y-m-d H:i:s')
 	));
-    if ($result = $req->fetch()) {
-        return true;
-    } else {
-        return false;
-    }
+    return true;
 }
 
 function signIn($db){
-    $sql = "SELECT * FROM membre WHERE pseudo = :pseudo AND mdp = :mdp";
+    $sql = "SELECT * FROM membre WHERE pseudo = :pseudo";
     $req = $db->prepare($sql);
     $req->execute(array(
-        ':pseudo' => $_POST['pseudo'],
-        ':mdp' => password_hash($_POST['mdp'], PASSWORD_DEFAULT)
+        ':pseudo' => $_POST['pseudo']
     ));
-    if ($result = $req->fetch()) {
-        return true;
+    if ($result = $req->fetch(PDO::FETCH_ASSOC)) {
+        if(password_verify($_POST['mdp'], $result['mdp']))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     } else {
         return false;
     }
