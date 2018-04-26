@@ -61,9 +61,39 @@ class Produit
 	    return $produit;
     }
 
+    public function create()
+	{
+		$db = new DB();
+		$db = $db->connect();
+		$sql = "INSERT INTO produit SET id_salle = :id_salle, date_arrivee = :date_arrivee, date_depart = :date_depart, prix = :prix, etat = :etat";
+		$req = $db->prepare($sql);
+		$req->execute(array(
+			':id_salle' => $_POST['id_salle'],
+			':date_arrivee' => $_POST['date_arrivee'],
+			':date_depart' => $_POST['date_depart'],
+			':prix' => $_POST['prix'],
+			':etat' => $_POST['etat']
+		));
+
+	    return true;
+	}
+
     public function update($id)
 	{
+		$db = new DB();
+		$db = $db->connect();
+		$sql = "UPDATE produit SET id_salle = :id_salle, date_arrivee = :date_arrivee, date_depart = :date_depart, prix = :prix, etat = :etat WHERE id = :id";
+		$sth = $db->prepare($sql);
+		$sth->execute(array(
+			':id_salle' => $_POST['id_salle'],
+			':date_arrivee' => $_POST['date_arrivee'],
+			':date_depart' => $_POST['date_depart'],
+			':prix' => $_POST['prix'],
+			':etat' => $_POST['etat'],
+			':id' => $id
+		));
 
+		return true;
 	}
 
 	public function delete($id)

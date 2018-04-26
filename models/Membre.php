@@ -65,9 +65,43 @@ class Membre
 	    return $membre;
 	}
 
+	public function create(){
+		$db = new DB();
+		$db = $db->connect();
+		$sql = "INSERT INTO membre SET pseudo = :pseudo, mdp = :mdp, nom = :nom, prenom = :prenom, email = :email, civilite = :civilite, statut = :statut, date_enregistrement = :date_enregistrement";
+		$req = $db->prepare($sql);
+		$req->execute(array(
+			':pseudo' => $_POST['pseudo'],
+			':mdp' => password_hash($_POST['mdp'], PASSWORD_DEFAULT),
+			':nom' => $_POST['nom'],
+			':prenom' => $_POST['prenom'],
+			':email' => $_POST['email'],
+			':civilite' => $_POST['civilite'],
+			':statut' => $_POST['statut'],
+			':date_enregistrement' => date('Y-m-d H:i:s')
+		));
+
+	    return true;
+	}
+
 	public function update($id)
 	{
+		$db = new DB();
+		$db = $db->connect();
+		$sql = "UPDATE membre SET pseudo = :pseudo, mdp = :mdp, nom = :nom, prenom = :prenom, email = :email, civilite = :civilite, statut = :statut WHERE id = :id";
+		$sth = $db->prepare($sql);
+		$sth->execute(array(
+			':pseudo' => $_POST['pseudo'],
+			':mdp' => password_hash($_POST['mdp'], PASSWORD_DEFAULT),
+			':nom' => $_POST['nom'],
+			':prenom' => $_POST['prenom'],
+			':email' => $_POST['email'],
+			':civilite' => $_POST['civilite'],
+			':statut' => $_POST['statut'],
+			':id' => $id
+		));
 
+		return true;
 	}
 
 	public function delete($id)
