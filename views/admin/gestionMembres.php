@@ -10,7 +10,12 @@
 				<p>Créer le : <?php echo $membre['date_enregistrement'] ?></p>
 			</div>
 			<div class="col s4">
-				<form method="GET" action="adminMembres.php">
+				<div class="row">
+					<a href="adminMembres.php?id=<?php echo $membre['id'] ?>" class="btn green waves-effect waves-light">Editer
+						<i class="material-icons right">mode_edit</i>
+					</a>
+				</div>
+				<form method="GET" action="adminMembres.php" class="row">
 					<input type="hidden" name="action" value="delete">
 					<input type="hidden" name="id" value="<?php echo $membre['id'] ?>">
 					<button class="btn red waves-effect waves-light" type="submit">Supprimer
