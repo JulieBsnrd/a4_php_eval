@@ -16,7 +16,6 @@
         <?php if(internauteEstConnecte()) : ?>
         <ul id="membreDropdown" class="dropdown-content">
             <li><a href='profil.php'>Profil</a></li>
-            <li><a href='javascript:void(0);'>Panier</a></li>
             <?php if(internauteEstConnecteEtEstAdmin()) : ?>
             <li><a href='javascript:void(0);'>Admin</a></li>
             <?php endif; ?>
@@ -34,7 +33,7 @@
                     <?php endif; ?>
                     <li><a>Boutique</a></li>
                     <?php if(internauteEstConnecte()) : ?>
-                    <li><a href='javascript:void(0);' class="dropdown-trigger" data-target="membreDropdown"><i class="left material-icons">perm_identity</i></a></li>
+                    <li><a href='javascript:void(0);' class="dropdown-trigger" data-target="membreDropdown"><i class="left material-icons">perm_identity</i><?= $_SESSION['membre']['pseudo'] ?></a></li>
                     <?php endif; ?>
                 </ul>
             </div>

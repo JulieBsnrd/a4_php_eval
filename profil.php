@@ -11,8 +11,6 @@ require '../a4_php_eval/models/functions.fn.php';
 if(!internauteEstConnecte()) header("location:signIn.php");
 //debug($_SESSION);
 
-
-
 //--------------------------------- AFFICHAGE HTML ---------------------------------//
 require 'views/templates/_header.php';
 require 'views/profil.php';
