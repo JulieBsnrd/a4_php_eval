@@ -21,7 +21,7 @@ function getOne($db, $commandeId)
     return $commande;
 }
 
-function create()
+function create($db)
 {
 	$sql = "INSERT INTO commande SET id_membre = :id_membre, id_produit = :id_produit, date_enregistrement = :date_enregistrement";
 	$req = $db->prepare($sql);

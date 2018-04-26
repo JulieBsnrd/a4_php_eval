@@ -21,7 +21,7 @@ function getOne($db, $avisId)
     return $avis;
 }
 
-function create()
+function create($db)
 {
 	$sql = "INSERT INTO avis SET id_membre = :id_membre, id_salle = :id_salle, commentaire = :commentaire, note = :note, date_enregistrement = :date_enregistrement";
 	$req = $db->prepare($sql);

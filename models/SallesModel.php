@@ -20,7 +20,7 @@ function getOne($db, $salleId)
     return $salle;
 }
 
-function create()
+function create($db)
 {
 	$sql = "INSERT INTO salle SET titre = :titre, description = :description, photo = :photo, pays = :pays, ville = :ville, cp = :cp, capacite = :capacite, categorie = :categorie";
 	$req = $db->prepare($sql);

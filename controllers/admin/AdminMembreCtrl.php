@@ -8,6 +8,7 @@ if(!empty($_GET)){
 	if(isset($_GET['action']) && $_GET['action'] == "delete"){
 		if(isset($_GET['id']) && !empty($_GET['id'])){
 			$membre = delete($db, $_GET['id']);
+			header('Location: AdminMembres.php');
 		}
 	}
 }
@@ -16,10 +17,12 @@ if(!empty($_POST)){
 	if(isset($_POST['action']) && $_POST['action'] == "edit"){
 		if(isset($_POST['id']) && !empty($_POST['id'])){
 			$membre = update($db, $_POST['id']);
+			header('Location: AdminMembres.php');
 		}
 	}
 	if(isset($_POST['action']) && $_POST['action'] == "create"){
 		$membre = create($db);
+		header('Location: AdminMembres.php');
 	}
 }
 
