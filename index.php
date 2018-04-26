@@ -1,14 +1,13 @@
 <?php
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-</head>
-<body>
+session_start();
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-</body>
-</html>
+require 'config/config.php';
+//require 'model/functions.fn.php';
+
+//core logic
+
+require 'views/templates/_header.php';
+require 'views/accueil.php';
+require 'views/templates/_footer.php';
+
+?>
