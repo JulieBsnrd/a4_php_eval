@@ -42,9 +42,22 @@ if(!empty($_POST)){
         $capacite = $_POST['capacite'];
         $categorie = $_POST['categorie'];
         $salle = create($db);
-        header('Location: AdminSalles.php');
+        //Handle image from files
+        if(isset($_FILES['avatar']) && $_FILES['avatar']['error']==0)
+        {
+
+            header('Location: profil.php');
+
+        }
+        else{
+            header('Location: signIn.php');
+
+
+        }
 	}
 }
+
+
 
 if(isset($_GET['id']) && !empty($_GET['id']) && !empty($_GET['action']) && $_GET['action'] == "get"){
 	$salle = getOne($db, $_GET['id']);

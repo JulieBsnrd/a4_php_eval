@@ -11,7 +11,7 @@ echo $salle['ville'];
 echo "<br>";
 echo $salle['cp'];
 echo "<br>";
-echo $salle['capacité'];
+echo $salle['capacite'];
 echo "<br>";
 echo $salle['categorie'];
 ?>

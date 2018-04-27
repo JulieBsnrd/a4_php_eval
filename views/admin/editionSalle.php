@@ -41,7 +41,7 @@ include ('views/templates/_header.php');
                     <div class="col s2">
                         <p>
                             <label>
-                                <input name="etat" value="libre" type="radio" <?= ($salle['categorie']) == "réunion" ? 'checked' : '' ?>/>
+                                <input name="categorie" value="reunion" type="radio" <?= ($salle['categorie']) == "réunion" ? 'checked' : '' ?>/>
                                 <span>Réunion</span>
                             </label>
                         </p>
@@ -49,7 +49,7 @@ include ('views/templates/_header.php');
                     <div class="col s2">
                         <p>
                             <label>
-                                <input name="etat" value="reservation" type="radio" <?= ($salle['categorie']) == "bureau" ? 'checked' : '' ?>/>
+                                <input name="categorie" value="bureau" type="radio" <?= ($salle['categorie']) == "bureau" ? 'checked' : '' ?>/>
                                 <span>Bureau</span>
                             </label>
                         </p>
@@ -57,7 +57,7 @@ include ('views/templates/_header.php');
                 <div class="col s2">
                     <p>
                         <label>
-                            <input name="etat" value="reservation" type="radio" <?= ($salle['categorie']) == "formation" ? 'checked' : '' ?>/>
+                            <input name="categorie" value="formation" type="radio" <?= ($salle['categorie']) == "formation" ? 'checked' : '' ?>/>
                             <span>Formation</span>
                         </label>
                     </p>

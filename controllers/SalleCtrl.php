@@ -6,7 +6,7 @@ require '../config/config.php';
 require('../models/SallesModel.php');
 
 //Handle image from files
-/*if(isset($_FILES['avatar'])&&$_FILES['avatar']['error']==0)
+if(isset($_FILES['avatar'])&&$_FILES['avatar']['error']==0)
 {
 	if($_FILES['avatar']['size']<=120000)
 	{
@@ -20,7 +20,7 @@ require('../models/SallesModel.php');
 			}
 		}
 	}
-}*/
+}
 
 if (isset($_GET['id']) && $_GET['id'] > 0) {
 	$salle = getOne($db, $_GET['id']);
