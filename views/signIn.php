@@ -24,7 +24,7 @@
                         <label for="mdp">Mot de passe</label>
                     </div>
                 </div>
-                <input type="submit">
+                <input class="btn green" type="submit">
             </fieldset>
         </form>
 
