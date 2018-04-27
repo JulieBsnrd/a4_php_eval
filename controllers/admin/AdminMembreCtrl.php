@@ -33,7 +33,6 @@ if(!empty($_POST)){
 //TODO add validator for each input
 //Should throw away if not admin
 
-require 'views/templates/_header.php';
 if(isset($_GET['id']) && !empty($_GET['id']) && !empty($_GET['action']) && $_GET['action'] == "get"){
 	$membre = get($db, $_GET['id']);
 	require 'views/admin/editionMembre.php';
@@ -45,6 +44,5 @@ else{
 	$membres = getAll($db);
 	require 'views/admin/gestionMembres.php';
 }
-require 'views/templates/_footer.php';
 
 ?>

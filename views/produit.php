@@ -1,3 +1,7 @@
+<?php
+include ('views/templates/_header.php');
+?>
+
 <div class="container">
 	<div class="row">
 		<div class="center-align">
@@ -35,3 +39,7 @@
 		</div>
 	</div>
 </div>
+
+<?php
+include ('views/templates/_footer.php');
+?>

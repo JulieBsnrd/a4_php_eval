@@ -1,5 +1,7 @@
 <?php
 
+require 'DB.php';
+
 class Produit 
 {
 	/** var int */
@@ -33,6 +35,8 @@ class Produit
 
     public function all()
     {
+    	$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT * FROM produit');
 	    $req->execute();
 
@@ -45,6 +49,8 @@ class Produit
 
 	public function find($id)
 	{
+		$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT * FROM produit WHERE id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
@@ -55,13 +61,45 @@ class Produit
 	    return $produit;
     }
 
+    public function create()
+	{
+		$db = new DB();
+		$db = $db->connect();
+		$sql = "INSERT INTO produit SET id_salle = :id_salle, date_arrivee = :date_arrivee, date_depart = :date_depart, prix = :prix, etat = :etat";
+		$req = $db->prepare($sql);
+		$req->execute(array(
+			':id_salle' => $_POST['id_salle'],
+			':date_arrivee' => $_POST['date_arrivee'],
+			':date_depart' => $_POST['date_depart'],
+			':prix' => $_POST['prix'],
+			':etat' => $_POST['etat']
+		));
+
+	    return true;
+	}
+
     public function update($id)
 	{
+		$db = new DB();
+		$db = $db->connect();
+		$sql = "UPDATE produit SET id_salle = :id_salle, date_arrivee = :date_arrivee, date_depart = :date_depart, prix = :prix, etat = :etat WHERE id = :id";
+		$sth = $db->prepare($sql);
+		$sth->execute(array(
+			':id_salle' => $_POST['id_salle'],
+			':date_arrivee' => $_POST['date_arrivee'],
+			':date_depart' => $_POST['date_depart'],
+			':prix' => $_POST['prix'],
+			':etat' => $_POST['etat'],
+			':id' => $id
+		));
 
+		return true;
 	}
 
 	public function delete($id)
 	{
+		$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('DELETE FROM produit WHERE id = ?');
 		$req->bindParam(':id', $id);
 		$req->execute();

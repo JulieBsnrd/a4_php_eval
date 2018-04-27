@@ -1,11 +1,7 @@
 ﻿<?php
-/**
- * Created by PhpStorm.
- * User: mehdi
- * Date: 26/04/2018
- * Time: 10:31
- */
+include ('views/templates/_header.php');
 ?>
+
 <div class="main-content blc">
     <div class="ctn">
 
@@ -24,7 +20,7 @@
                         <label for="mdp">Mot de passe</label>
                     </div>
                 </div>
-                <input type="submit">
+                <input class="btn green" type="submit">
             </fieldset>
         </form>
 
@@ -32,3 +28,7 @@
 
     </div>
 </div>
+
+<?php
+include ('views/templates/_footer.php');
+?>

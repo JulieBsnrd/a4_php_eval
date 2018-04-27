@@ -1,3 +1,7 @@
+<?php
+include ('views/templates/_header.php');
+?>
+
 <div class="container">
 	<div class="row">
 		<h5>Admin</h5>
@@ -10,3 +14,7 @@
 		<a href="" class="waves-effect waves-teal btn">Gestion des commandes</a>
 	</div>
 </div>
+
+<?php
+include ('views/templates/_footer.php');
+?>

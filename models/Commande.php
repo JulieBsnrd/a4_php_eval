@@ -1,5 +1,7 @@
 <?php
 
+require 'DB.php';
+
 class Commande
 {
 	/** var int */
@@ -25,6 +27,8 @@ class Commande
 
     public function all()
     {
+    	$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT * FROM commande');
 	    $req->execute();
 
@@ -37,6 +41,8 @@ class Commande
 
     public function find($id)
     {
+    	$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT * FROM commande WHERE id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
@@ -49,6 +55,8 @@ class Commande
 
     public function findAllByUser($id_membre)
     {
+    	$db = new DB();
+		$db = $db->connect();
     	$req = $db->prepare('SELECT * FROM commande WHERE id_membre = :id_membre');
 	    $req->bindParam(':id_membre', $id_membre);
 	    $req->execute();
@@ -60,8 +68,42 @@ class Commande
 	    return $commandes;
     }
 
+    // @todo, do in controller : new Command($_POST)
+    // and use $this here instead of $_POST
+	public function create()
+	{
+		$db = new DB();
+		$db = $db->connect();
+		$sql = "INSERT INTO commande SET id_membre = :id_membre, id_produit = :id_produit, date_enregistrement = :date_enregistrement";
+		$req = $db->prepare($sql);
+		$req->execute(array(
+			':id_membre' => $_POST['id_membre'],
+			':id_produit' => $_POST['id_produit'],
+			':date_enregistrement' => date('Y-m-d H:i:s')
+		));
+
+	    return true;
+	}
+
+	public function update($commandeId)
+	{
+		$db = new DB();
+		$db = $db->connect();
+		$sql = "UPDATE commande SET id_membre = :id_membre, id_produit = :id_produit WHERE id = :id";
+		$sth = $db->prepare($sql);
+		$sth->execute(array(
+			':id_membre' => $_POST['id_membre'],
+			':id_produit' => $_POST['id_produit'],
+			':id' => $commandeId
+		));
+
+		return true;
+	}
+
     public function delete($id)
     {
+    	$db = new DB();
+		$db = $db->connect();
     	$req = $db->prepare('DELETE FROM commande WHERE id = ?');
 		$req->bindParam(':id', $id);
 		$req->execute();
