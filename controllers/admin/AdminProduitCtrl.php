@@ -23,7 +23,6 @@ if(!empty($_POST)){
 			$dateArrivee = DateTime::createFromFormat('M d, Y', $_POST['date_arrivee']);
 			$_POST['date_depart'] = $dateDepart->format('Y-m-d H:i:s');
 			$_POST['date_arrivee'] = $dateArrivee->format('Y-m-d H:i:s');
-
 			$produit = Produit::update($_POST['id']);
 			header('Location: AdminProduitCtrl.php');
 		}
@@ -40,6 +39,7 @@ if(!empty($_POST)){
 
 if (isset($_GET['id']) && !empty($_GET['id']) && !empty($_GET['action']) && $_GET['action'] == "get") {
 	$produit = Produit::find($_GET['id']);
+	$salles = Produit::getSalles();
 	include '../../views/admin/editionProduit.php';
 } elseif (isset($_GET['path']) && $_GET['path'] == "create") {
 	include '../../views/admin/ajoutProduit.php';

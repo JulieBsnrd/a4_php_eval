@@ -48,7 +48,7 @@ class Produit
     static public function all()
     {
     	$db = DB::getInstance();
-		$req = $db->prepare('SELECT * FROM produit INNER JOIN salle ON produit.id_salle = salle.id');
+		$req = $db->prepare('SELECT produit.id, produit.id_salle, produit.date_arrivee, produit.date_depart, produit.prix, produit.etat, salle.titre, salle.photo FROM produit INNER JOIN salle ON produit.id_salle = salle.id');
 	    $req->execute();
 
 	    foreach($req->fetchAll() as $produit){
@@ -61,7 +61,7 @@ class Produit
 	static public function find($id)
 	{
 		$db = DB::getInstance();
-		$req = $db->prepare('SELECT * FROM produit INNER JOIN salle ON produit.id_salle = salle.id WHERE id = :id');
+		$req = $db->prepare('SELECT  produit.id, produit.id_salle, produit.date_arrivee, produit.date_depart, produit.prix, produit.etat, salle.titre, salle.photo FROM produit INNER JOIN salle ON produit.id_salle = salle.id WHERE produit.id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
 
@@ -118,6 +118,13 @@ class Produit
 			echo "Le produit a bien été supprimé";
 			return true;
 		}
+	}
+
+	static public function getSalles(){
+		$db = DB::getInstance();
+		$req = $db->prepare('SELECT * FROM salle');
+	    $req->execute();
+	    return $req->fetchAll();
 	}
 }
 

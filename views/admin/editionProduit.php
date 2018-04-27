@@ -5,7 +5,7 @@ include ('../../views/templates/_header.php');
 <div class="container">
 	<div class="row">
 		<div class="center-align">
-			<h5><?= $produit->id_salle ?></h5>
+			<h5><?= $produit->titre_salle ?></h5>
 		</div>
 	</div>
 	<div class="row">
@@ -35,8 +35,13 @@ include ('../../views/templates/_header.php');
 			</div>
 			<div class="row">
 			<div class="input-field col s12">
-					<input id="id_salle" type="text" class="validate" name="id_salle" value="<?= $produit->id_salle ?>">
-			        <label for="id_salle">Numéro salle</label>
+			        <div class="input-field col s12">
+						<select name="id_salle" class="browser-default">
+							<?php foreach ($salles as $salle) : ?>
+								<option value="<?= $salle['id'] ?>" <?= $produit->id_salle == $salle['id'] ? 'selected' : '' ?>><?= $salle['titre'] ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
 				</div>
 				<div class="input-field col s12">
 					<input id="prix" type="text" class="validate" name="prix" value="<?= $produit->prix ?>">
