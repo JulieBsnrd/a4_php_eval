@@ -5,32 +5,37 @@ require 'DB.php';
 class Commande
 {
 	/** var int */
-	protected $id;
+	public $id;
 
 	/** var int */
-	protected $id_membre;
+	public $id_membre;
 
 	/** var int */
-	protected $id_produit;
+	public $id_produit;
 
 	/** var string */
-	protected $date_enregistrement;
+	public $date_enregistrement;
 
 
 	public function __construct($id, $id_membre, $id_produit, $date_enregistrement) 
 	{
+		$date = DateTime::createFromFormat('Y-m-d H:i:s', $date_enregistrement);
 		$this->id = $id;
 		$this->id_membre = $id_membre;
 		$this->id_produit = $id_produit;
-		$this->date_enregistrement = $date_enregistrement;
+		if(!empty($date)){
+			$this->date_enregistrement = $date->format('M d, Y');
+		}
+		
     }
 
-    public function all()
+    public static function all()
     {
-    	$db = new DB();
-		$db = $db->connect();
+    	$db = DB::getInstance();
 		$req = $db->prepare('SELECT * FROM commande');
 	    $req->execute();
+
+	    $commandes = [];
 
 	    foreach($req->fetchAll() as $commande) {
 	    	$commandes[] = new Commande($commande['id'], $commande['id_membre'], $commande['id_produit'], $commande['date_enregistrement']);
@@ -39,10 +44,9 @@ class Commande
 	    return $commandes;
     }
 
-    public function find($id)
+    public static function find($id)
     {
-    	$db = new DB();
-		$db = $db->connect();
+    	$db = DB::getInstance();
 		$req = $db->prepare('SELECT * FROM commande WHERE id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
@@ -53,10 +57,9 @@ class Commande
 	    return $commande;
     }
 
-    public function findAllByUser($id_membre)
+    public static function findAllByUser($id_membre)
     {
-    	$db = new DB();
-		$db = $db->connect();
+    	$db = DB::getInstance();
     	$req = $db->prepare('SELECT * FROM commande WHERE id_membre = :id_membre');
 	    $req->bindParam(':id_membre', $id_membre);
 	    $req->execute();
@@ -70,10 +73,9 @@ class Commande
 
     // @todo, do in controller : new Command($_POST)
     // and use $this here instead of $_POST
-	public function create()
+	public static function create()
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$sql = "INSERT INTO commande SET id_membre = :id_membre, id_produit = :id_produit, date_enregistrement = :date_enregistrement";
 		$req = $db->prepare($sql);
 		$req->execute(array(
@@ -85,10 +87,9 @@ class Commande
 	    return true;
 	}
 
-	public function update($commandeId)
+	public static function update($commandeId)
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$sql = "UPDATE commande SET id_membre = :id_membre, id_produit = :id_produit WHERE id = :id";
 		$sth = $db->prepare($sql);
 		$sth->execute(array(
@@ -100,21 +101,34 @@ class Commande
 		return true;
 	}
 
-    public function delete($id)
+    public static function delete($id)
     {
-    	$db = new DB();
-		$db = $db->connect();
-    	$req = $db->prepare('DELETE FROM commande WHERE id = ?');
+    	$db = DB::getInstance();
+    	$req = $db->prepare('DELETE FROM commande WHERE id = :id');
 		$req->bindParam(':id', $id);
 		$req->execute();
 
-		if (find($id)) {
+		if (Commande::find($id)) {
 			echo "La suppression a échoué";
 			return false;
 		} else {
 			echo "La commande a bien été supprimée";
 			return true;
 		}
+    }
+
+    public static function getMembres(){
+    	$db = DB::getInstance();
+		$req = $db->prepare('SELECT id, pseudo, nom, prenom, email, civilite, statut, date_enregistrement FROM membre');
+	    $req->execute();
+	    return $req->fetchAll();
+    }
+
+    public static function getProduits(){
+    	$db = DB::getInstance();
+		$req = $db->prepare('SELECT produit.id, produit.id_salle, produit.date_arrivee, produit.date_depart, produit.prix, produit.etat, salle.titre, salle.photo FROM produit INNER JOIN salle ON produit.id_salle = salle.id');
+	    $req->execute();
+	    return $req->fetchAll();
     }
 }
 

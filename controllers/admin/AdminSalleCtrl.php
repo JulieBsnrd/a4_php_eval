@@ -10,7 +10,7 @@ if($_SESSION['membre']['statut'] != "1"){
 if(!empty($_GET)){
 	if(isset($_GET['action']) && $_GET['action'] == "delete"){
 		if(isset($_GET['id']) && !empty($_GET['id'])){
-			$salle = Produit::delete($_GET['id']);
+			$salle = Salle::delete($_GET['id']);
 			header('Location: AdminSalleCtrl.php');
 		}
 	}

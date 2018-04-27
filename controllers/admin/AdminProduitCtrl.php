@@ -41,7 +41,8 @@ if (isset($_GET['id']) && !empty($_GET['id']) && !empty($_GET['action']) && $_GE
 	$produit = Produit::find($_GET['id']);
 	$salles = Produit::getSalles();
 	include '../../views/admin/editionProduit.php';
-} elseif (isset($_GET['path']) && $_GET['path'] == "create") {
+} elseif (isset($_GET['path']) && $_GET['path'] == "create"){
+	$salles = Produit::getSalles();
 	include '../../views/admin/ajoutProduit.php';
 } else {
 	$produits = Produit::all();

@@ -33,10 +33,13 @@ include ('../../views/templates/_header.php');
 				</div>
 			</div>
 			<div class="row">
-			<div class="input-field col s12">
-					<input id="id_salle" type="text" class="validate" name="id_salle">
-			        <label for="id_salle">Numéro salle</label>
-				</div>
+				<div class="input-field col s12">
+						<select name="id_salle" class="browser-default">
+							<?php foreach ($salles as $salle) : ?>
+								<option value="<?= $salle['id'] ?>"><?= $salle['titre'] ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
 				<div class="input-field col s12">
 					<input id="prix" type="text" class="validate" name="prix">
 			        <label for="prix">Prix</label>

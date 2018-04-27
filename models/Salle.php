@@ -120,7 +120,7 @@ class Salle
 	public static function delete($id)
 	{
 		$db = DB::getInstance();
-		$req = $db->prepare('DELETE FROM salle WHERE id = ?');
+		$req = $db->prepare('DELETE FROM salle WHERE id = :id');
 		$req->bindParam(':id', $id);
 		$req->execute();
 
