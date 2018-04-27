@@ -124,7 +124,7 @@ class Salle
 		$req->bindParam(':id', $id);
 		$req->execute();
 
-		if (find($id)) {
+		if (Salle::find($id)) {
 			echo "La suppression a échoué";
 			return false;
 		} else {

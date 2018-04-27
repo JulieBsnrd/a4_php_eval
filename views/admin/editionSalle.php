@@ -5,7 +5,7 @@ include ('../../views/templates/_header.php');
 <div class="container">
 
 	<div class="row">
-		<form method="POST" action="adminSalles.php">
+		<form method="POST" action="AdminSalleCtrl.php">
 			<input type="hidden" name="action" value="edit">
 			<input type="hidden" name="id" value="<?=  $salle->id ?>">
 

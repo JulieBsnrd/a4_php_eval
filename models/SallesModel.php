@@ -27,7 +27,7 @@ function create($db)
 	$req->execute(array(
 		':titre' => $_POST['titre'],
 		':description' => $_POST['description'],
-		':photo' => $_POST['photo'],
+		':photo' => $_FILES['photo'],
 		':pays' => $_POST['pays'],
 		':ville' => $_POST['ville'],
 		':cp' => $_POST['cp'],

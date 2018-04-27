@@ -4,7 +4,7 @@ session_start();
 require '../../models/Salle.php';
 
 if($_SESSION['membre']['statut'] != "1"){
-	header("location:signIn.php");
+    header("location:SignInCtrl.php");
 }
 
 if(!empty($_GET)){
@@ -42,8 +42,6 @@ if(!empty($_POST)){
 	}
 }
 
-
-
 if(isset($_GET['id']) && !empty($_GET['id']) && !empty($_GET['action']) && $_GET['action'] == "get"){
 	$salle = Salle::find($_GET['id']);
 	require '../../views/admin/editionSalle.php';
@@ -55,4 +53,5 @@ else{
 	$salles = Salle::all();
 	require '../../views/admin/gestionSalles.php';
 }
+
 ?>
