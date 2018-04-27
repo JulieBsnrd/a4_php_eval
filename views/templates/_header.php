@@ -1,4 +1,9 @@
-<?php require_once '../a4_php_eval/models/functions.fn.php'; ?>
+<?php 
+$root = realpath($_SERVER["DOCUMENT_ROOT"]);
+
+require_once "$root/a4_php_eval/models/functions.fn.php";
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,23 +19,23 @@
 	<header>
         <?php if(internauteEstConnecte()) : ?>
         <ul id="membreDropdown" class="dropdown-content">
-            <li><a href='profil.php'>Profil</a></li>
+            <li><a href='ProfilCtrl.php'>Profil</a></li>
             <?php if(internauteEstConnecteEtEstAdmin()) : ?>
-            <li><a href='adminHub.php'>Admin</a></li>
+            <li><a href='admin/AdminHubCtrl.php'>Admin</a></li>
             <?php endif; ?>
             <li class="divider"></li>
-            <li><a href='signIn.php?action=logOut'>Me déconnecter</a></li>
+            <li><a href='SignInCtrl.php?action=logOut'>Me déconnecter</a></li>
         </ul>
         <?php endif; ?>
         <nav>
             <div class="nav-wrapper grey darken-3">
-                <a href='index.php' class="brand-logo">Lokisalle</a>
+                <a href='IndexCtrl.php' class="brand-logo">Lokisalle</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <?php if(!internauteEstConnecte()) : ?>
-                    <li><a href='signUp.php'>Inscription</a></li>
-                    <li><a href='signIn.php'>Connexion</a></li>
+                    <li><a href='SignUpCtrl.php'>Inscription</a></li>
+                    <li><a href='SignInCtrl.php'>Connexion</a></li>
                     <?php endif; ?>
-                    <li><a>Boutique</a></li>
+                    <li><a href='BoutiqueCtrl.php'>Boutique</a></li>
                     <?php if(internauteEstConnecte()) : ?>
                     <li><a href='javascript:void(0);' class="dropdown-trigger" data-target="membreDropdown"><i class="left material-icons">perm_identity</i><?= $_SESSION['membre']['pseudo'] ?></a></li>
                     <?php endif; ?>

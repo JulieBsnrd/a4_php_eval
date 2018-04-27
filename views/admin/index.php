@@ -1,5 +1,7 @@
 <?php
-include ('views/templates/_header.php');
+// @todo It's dead code !!!!
+// Must we remove it ??
+include ('../../views/templates/_header.php');
 ?>
 
 <div class="container">
@@ -9,12 +11,12 @@ include ('views/templates/_header.php');
 	<div class="row center-align">
 		<a href="" class="waves-effect waves-teal btn">Gestion des salles</a>
 		<a href="" class="waves-effect waves-teal btn">Gestion des produits</a>
-		<a href="adminMembres.php" class="waves-effect waves-teal btn">Gestion des membres</a>
+		<a href="AdminMembreCtrl.php" class="waves-effect waves-teal btn">Gestion des membres</a>
 		<a href="" class="waves-effect waves-teal btn">Gestion des avis</a>
 		<a href="" class="waves-effect waves-teal btn">Gestion des commandes</a>
 	</div>
 </div>
 
 <?php
-include ('views/templates/_footer.php');
+include ('../../views/templates/_footer.php');
 ?>

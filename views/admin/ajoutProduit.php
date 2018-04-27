@@ -1,5 +1,5 @@
 <?php
-include ('views/templates/_header.php');
+include ('../../views/templates/_header.php');
 ?>
 
 <div class="container">
@@ -9,7 +9,7 @@ include ('views/templates/_header.php');
 		</div>
 	</div>
 	<div class="row">
-		<form method="POST" action="adminProduits.php">
+		<form method="POST" action="AdminProduitCtrl.php">
 			<input type="hidden" name="action" value="create">
 			<div class="row">
 				<div class="col s12">
@@ -62,5 +62,5 @@ include ('views/templates/_header.php');
 </div>
 
 <?php
-include ('views/templates/_footer.php');
+include ('../../views/templates/_footer.php');
 ?>

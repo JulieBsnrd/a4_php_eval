@@ -1,5 +1,5 @@
 <?php
-include ('views/templates/_header.php');
+include ('../views/templates/_header.php');
 ?>
 
 <div class="container">
@@ -9,7 +9,7 @@ include ('views/templates/_header.php');
         </div>
     </div>
     <div class="row">
-        <form method="POST" action="signUp.php">
+        <form method="POST" action="SignUpCtrl.php">
             <div class="row">
                 <div class="col s6">
                     <p>
@@ -64,5 +64,5 @@ include ('views/templates/_header.php');
 </div>
 
 <?php
-include ('views/templates/_footer.php');
+include ('../views/templates/_footer.php');
 ?>

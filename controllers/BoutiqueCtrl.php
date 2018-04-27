@@ -1,15 +1,15 @@
 <?php
 session_start();
 
-require 'config/config.php';
-require 'models/ProduitsModel.php';
+require '../config/config.php';
+require '../models/ProduitsModel.php';
 
 if(isset($_GET['id']) && !empty($_GET['id'])) {
 	$produit = getOne($db, $_GET['id']);
-	require 'views/produit.php';
+	include '../views/produit.php';
 } else {
 	$produits = getAll($db);
-	require 'views/boutique.php';
+	include '../views/boutique.php';
 }
 
 ?>

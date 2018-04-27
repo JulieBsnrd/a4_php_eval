@@ -1,9 +1,9 @@
 <?php
 //session_start();
 
-require 'config/config.php';
-require 'models/functions.fn.php';
-require 'models/MembresModel.php';
+require '../config/config.php';
+require '../models/functions.fn.php';
+require '../models/MembresModel.php';
 
 //core logic
 if(!empty($_POST)){
@@ -28,6 +28,6 @@ elseif(isset($_GET['action']) && $_GET['action'] == "logOut")
     session_destroy();
 }
 
-require 'views/signIn.php';
+include '../views/signIn.php';
 
 ?>

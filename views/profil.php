@@ -1,5 +1,5 @@
 <?php
-include ('views/templates/_header.php');
+include ('../views/templates/_header.php');
 ?>
 
 <div class="main-content blc">
@@ -63,5 +63,5 @@ include ('views/templates/_header.php');
 </div>
 
 <?php
-include ('views/templates/_footer.php');
+include ('../views/templates/_footer.php');
 ?>

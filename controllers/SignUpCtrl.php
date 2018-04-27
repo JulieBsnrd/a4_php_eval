@@ -1,9 +1,10 @@
 <?php
 session_start();
 
-require 'config/config.php';
-require 'models/functions.fn.php';
-require 'models/MembresModel.php';
+require '../config/config.php';
+require '../models/functions.fn.php';
+require '../models/MembresModel.php';
+
 //core logic
 if(!empty($_POST)){
 	$error = validatorSignUp();
@@ -25,7 +26,7 @@ if(!empty($_POST)){
 				//false -> connexion = FAIL
 				$connect = userRegistration($db, $_POST['username'], $_POST['email'], $_POST['password']);
 				if($connect == true){
-					header('Location: index.php');
+					header('Location: IndexCtrl.php');
 				}
 				else{
 					$error = 'Le couple email / mot de passe est incorrect';
@@ -35,6 +36,6 @@ if(!empty($_POST)){
 	}*/
 }
 
-require 'views/signUp.php';
+include '../views/signUp.php';
 
 ?>

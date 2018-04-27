@@ -1,11 +1,11 @@
 <?php
-include ('views/templates/_header.php');
+include ('../../views/templates/_header.php');
 ?>
 
 <div class="container">
 	<div class="row">
 		<h5>Gestions des membres</h5>
-		<a href="adminMembres.php?path=create" class="btn blue">Ajouter un utilisateur</a>
+		<a href="AdminMembreCtrl.php?path=create" class="btn blue">Ajouter un utilisateur</a>
 	</div>
 	<div class="row">
 		<?php foreach($membres as $membre) : ?>
@@ -17,11 +17,11 @@ include ('views/templates/_header.php');
 			</div>
 			<div class="col s4">
 				<div class="row">
-					<a href="adminMembres.php?id=<?= $membre->id ?>&action=get" class="btn green waves-effect waves-light">Editer
+					<a href="AdminMembreCtrl.php?id=<?= $membre->id ?>&action=get" class="btn green waves-effect waves-light">Editer
 						<i class="material-icons right">mode_edit</i>
 					</a>
 				</div>
-				<form method="GET" action="adminMembres.php" class="row">
+				<form method="GET" action="AdminMembreCtrl.php" class="row">
 					<input type="hidden" name="action" value="delete">
 					<input type="hidden" name="id" value="<?= $membre->id ?>">
 					<button class="btn red waves-effect waves-light" type="submit">Supprimer
@@ -34,5 +34,5 @@ include ('views/templates/_header.php');
 </div>
 
 <?php
-include ('views/templates/_footer.php');
+include ('../../views/templates/_footer.php');
 ?>

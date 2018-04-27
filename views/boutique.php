@@ -1,5 +1,5 @@
 <?php
-include ('views/templates/_header.php');
+include ('../views/templates/_header.php');
 ?>
 
 <div class="container">
@@ -17,7 +17,7 @@ include ('views/templates/_header.php');
 			</div>
 			<div class="col s4">
 				<div class="row">
-					<a href="boutique.php?id=<?= $produit['id'] ?>&action=get" class="btn blue waves-effect waves-light">Détails
+					<a href="BoutiqueCtrl.php?id=<?= $produit['id'] ?>&action=get" class="btn blue waves-effect waves-light">Détails
 						<i class="material-icons">details</i>
 					</a>
 				</div>
@@ -27,5 +27,5 @@ include ('views/templates/_header.php');
 </div>
 
 <?php
-include ('views/templates/_footer.php');
+include ('../views/templates/_footer.php');
 ?>

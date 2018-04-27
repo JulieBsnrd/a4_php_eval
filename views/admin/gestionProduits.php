@@ -1,14 +1,15 @@
 <?php
-include ('views/templates/_header.php');
+include ('../../views/templates/_header.php');
 ?>
 
 <div class="container">
 	<div class="row">
 		<h5>Gestions des Produits</h5>
-		<a href="adminProduits.php?path=create" class="btn blue">Ajouter un produit</a>
+		<a href="AdminProduitCtrl.php?path=create" class="btn blue">Ajouter un produit</a>
 	</div>
 	<div class="row">
-		<?php foreach($produits as $produit) : ?>
+		<?php if ($produits) {
+		foreach($produits as $produit) : ?>
 			<div class="col s8">
 				<h6><?= $produit->id_salle ?></h6>
 				<p>Prix : <?= $produit->prix ?></p>
@@ -18,11 +19,11 @@ include ('views/templates/_header.php');
 			</div>
 			<div class="col s4">
 				<div class="row">
-					<a href="adminProduits.php?id=<?= $produit->id ?>&action=get" class="btn green waves-effect waves-light">Editer
+					<a href="AdminProduitCtrl.php?id=<?= $produit->id ?>&action=get" class="btn green waves-effect waves-light">Editer
 						<i class="material-icons right">mode_edit</i>
 					</a>
 				</div>
-				<form method="GET" action="adminProduits.php" class="row">
+				<form method="GET" action="AdminProduitCtrl.php" class="row">
 					<input type="hidden" name="action" value="delete">
 					<input type="hidden" name="id" value="<?php echo $produit->id ?>">
 					<button class="btn red waves-effect waves-light" type="submit">Supprimer
@@ -30,10 +31,14 @@ include ('views/templates/_header.php');
 					</button>
 				</form>
 			</div>
-		<?php endforeach; ?>
+		<?php endforeach; } else { ?>
+			<div class="col s8">
+				<p>Pas de produit</p>
+			</div>		
+		<?php } ?>
 	</div>
 </div>
 
 <?php
-include ('views/templates/_footer.php');
+include ('../../views/templates/_footer.php');
 ?>

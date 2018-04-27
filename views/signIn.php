@@ -1,12 +1,12 @@
 ﻿<?php
-include ('views/templates/_header.php');
+include ('../views/templates/_header.php');
 ?>
 
 <div class="main-content blc">
     <div class="ctn">
 
 
-        <form action="signIn.php" method="post" class="form">
+        <form action="SignInCtrl.php" method="post" class="form">
             <fieldset>
                 <legend>Connexion</legend>
                 <div class="row">
@@ -24,11 +24,11 @@ include ('views/templates/_header.php');
             </fieldset>
         </form>
 
-        <p>Pas encore inscrit ? <a href="signUp.php">Cliquez ici pour corriger cela !</a></p>
+        <p>Pas encore inscrit ? <a href="SignUpCtrl.php">Cliquez ici pour corriger cela !</a></p>
 
     </div>
 </div>
 
 <?php
-include ('views/templates/_footer.php');
+include ('../views/templates/_footer.php');
 ?>
