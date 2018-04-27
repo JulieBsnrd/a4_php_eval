@@ -4,7 +4,7 @@ include ('views/templates/_header.php');
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col s4">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="views/css/img/member.jpg" alt="Card image cap">
                 <div class="card-body">
@@ -14,7 +14,7 @@ include ('views/templates/_header.php');
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col s4">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="views/css/img/order.jpg" alt="Card image cap">
                 <div class="card-body">
@@ -24,7 +24,7 @@ include ('views/templates/_header.php');
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col s4">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="views/css/img/product.jpg" alt="Card image cap">
                 <div class="card-body">

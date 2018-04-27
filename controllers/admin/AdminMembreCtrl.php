@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-//require 'config/config.php';
 require 'models/Membre.php';
 
 if($_SESSION['membre']['statut'] != "1"){
