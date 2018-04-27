@@ -8,7 +8,6 @@ include ('../../views/templates/_header.php');
 		<form method="POST" action="AdminSalleCtrl.php">
 			<input type="hidden" name="action" value="edit">
 			<input type="hidden" name="id" value="<?=  $salle->id ?>">
-
             <div class="row">
                 <div class="input-field col s12">
                     <input id="id_salle" type="text" class="validate" name="titre" value="<?= $salle->titre ?>">
