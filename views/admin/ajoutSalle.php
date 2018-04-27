@@ -24,7 +24,7 @@ include ('views/templates/_header.php');
             </div>
         </div>
         <div class="row">
-            <form method="POST" action="adminSalles.php">
+            <form method="POST" action="adminSalles.php" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="create">
 
                 <div class="row">
@@ -98,7 +98,7 @@ include ('views/templates/_header.php');
                             <h6>Image</h6>
                         </div>
                         <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-                        <input type="file" name="avatar">
+                        <input type="file" name="photo">
 
                 </div>
                 <div class="row">
