@@ -5,38 +5,41 @@ require 'DB.php';
 class Produit 
 {
 	/** var int */
-	protected $id;
+	public $id;
 
 	/** var int */
-	protected $id_salle;
+	public $id_salle;
 
 	/** var string */
-	protected $date_arrivee;
+	public $date_arrivee;
 
 	/** var string */
-	protected $date_depart;
+	public $date_depart;
 
 	/** var int */
-	protected $prix;
+	public $prix;
 
 	/** var string */
-	protected $etat;
+	public $etat;
 
 
 	public function __construct($id, $id_salle, $date_arrivee, $date_depart, $prix, $etat) 
 	{
+		$dateDepart = DateTime::createFromFormat('Y-m-d H:i:s', $date_depart);
+		$dateArrivee = DateTime::createFromFormat('Y-m-d H:i:s', $date_arrivee);
 		$this->id = $id;
 		$this->id_salle = $id_salle;
-		$this->date_arrivee = $date_arrivee;
-		$this->date_depart = $date_depart;
+		if(!empty($dateDepart) && !empty($dateArrivee)){
+			$this->date_arrivee = $dateArrivee->format('M d, Y');
+			$this->date_depart = $dateDepart->format('M d, Y');
+		}
 		$this->prix = $prix;
 		$this->etat = $etat;
     }
 
-    public function all()
+    static public function all()
     {
-    	$db = new DB();
-		$db = $db->connect();
+    	$db = DB::getInstance();
 		$req = $db->prepare('SELECT * FROM produit');
 	    $req->execute();
 
@@ -47,10 +50,9 @@ class Produit
 	    return $produits;
 	}
 
-	public function find($id)
+	static public function find($id)
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$req = $db->prepare('SELECT * FROM produit WHERE id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
@@ -61,10 +63,9 @@ class Produit
 	    return $produit;
     }
 
-    public function create()
+    static public function create()
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$sql = "INSERT INTO produit SET id_salle = :id_salle, date_arrivee = :date_arrivee, date_depart = :date_depart, prix = :prix, etat = :etat";
 		$req = $db->prepare($sql);
 		$req->execute(array(
@@ -78,10 +79,9 @@ class Produit
 	    return true;
 	}
 
-    public function update($id)
+    static public function update($id)
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$sql = "UPDATE produit SET id_salle = :id_salle, date_arrivee = :date_arrivee, date_depart = :date_depart, prix = :prix, etat = :etat WHERE id = :id";
 		$sth = $db->prepare($sql);
 		$sth->execute(array(
@@ -96,18 +96,17 @@ class Produit
 		return true;
 	}
 
-	public function delete($id)
+	static public function delete($id)
 	{
-		$db = new DB();
-		$db = $db->connect();
-		$req = $db->prepare('DELETE FROM produit WHERE id = ?');
+		$db = DB::getInstance();
+		$req = $db->prepare('DELETE FROM produit WHERE id = :id');
 		$req->bindParam(':id', $id);
 		$req->execute();
 
-		if (find($id)) {
+		if(Produit::find($id)) {
 			echo "La suppression a échoué";
 			return false;
-		} else {
+		}else {
 			echo "Le produit a bien été supprimé";
 			return true;
 		}

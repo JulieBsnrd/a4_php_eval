@@ -10,20 +10,20 @@ include ('views/templates/_header.php');
 	<div class="row">
 		<?php foreach($membres as $membre) : ?>
 			<div class="col s8">
-				<h6><?php echo $membre['nom'].' '.$membre['prenom'].' ('.$membre['pseudo'].')'; ?></h6>
-				<p>Admin : <?= $membre['statut'] == "1" ? "oui" : "non"; ?></p>
-				<p>Email : <?php echo $membre['email'] ?></p>
-				<p>Créer le : <?php echo $membre['date_enregistrement'] ?></p>
+				<h6><?= $membre->nom.' '.$membre->prenom.' ('.$membre->pseudo.')'; ?></h6>
+				<p>Admin : <?= $membre->statut == "1" ? "oui" : "non"; ?></p>
+				<p>Email : <?= $membre->email ?></p>
+				<p>Créer le : <?= $membre->dateEnregistrement ?></p>
 			</div>
 			<div class="col s4">
 				<div class="row">
-					<a href="adminMembres.php?id=<?= $membre['id'] ?>&action=get" class="btn green waves-effect waves-light">Editer
+					<a href="adminMembres.php?id=<?= $membre->id ?>&action=get" class="btn green waves-effect waves-light">Editer
 						<i class="material-icons right">mode_edit</i>
 					</a>
 				</div>
 				<form method="GET" action="adminMembres.php" class="row">
 					<input type="hidden" name="action" value="delete">
-					<input type="hidden" name="id" value="<?php echo $membre['id'] ?>">
+					<input type="hidden" name="id" value="<?= $membre->id ?>">
 					<button class="btn red waves-effect waves-light" type="submit">Supprimer
 						<i class="material-icons right">delete</i>
 					</button>
