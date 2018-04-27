@@ -28,9 +28,6 @@ elseif(isset($_GET['action']) && $_GET['action'] == "logOut")
     session_destroy();
 }
 
-
-require 'views/templates/_header.php';
 require 'views/signIn.php';
-require 'views/templates/_footer.php';
 
 ?>

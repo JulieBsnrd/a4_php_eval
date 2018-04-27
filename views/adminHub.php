@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mehdi
- * Date: 26/04/2018
- * Time: 17:00
- */
-
+include ('views/templates/_header.php');
 ?>
-
 
 <div class="container">
     <div class="row">
@@ -43,3 +36,7 @@
         </div>
     </div>
 </div>
+
+<?php
+include ('views/templates/_footer.php');
+?>

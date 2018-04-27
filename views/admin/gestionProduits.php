@@ -1,3 +1,7 @@
+<?php
+include ('views/templates/_header.php');
+?>
+
 <div class="container">
 	<div class="row">
 		<h5>Gestions des Produits</h5>
@@ -29,3 +33,7 @@
 		<?php endforeach; ?>
 	</div>
 </div>
+
+<?php
+include ('views/templates/_footer.php');
+?>

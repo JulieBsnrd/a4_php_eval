@@ -38,7 +38,6 @@ if(!empty($_POST)){
 	}
 }
 
-require 'views/templates/_header.php';
 if(isset($_GET['id']) && !empty($_GET['id']) && !empty($_GET['action']) && $_GET['action'] == "get"){
 	$produit = getOne($db, $_GET['id']);
 	require 'views/admin/editionProduit.php';
@@ -50,5 +49,4 @@ else{
 	$produits = getAll($db);
 	require 'views/admin/gestionProduits.php';
 }
-require 'views/templates/_footer.php';
 ?>

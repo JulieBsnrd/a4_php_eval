@@ -1,5 +1,6 @@
 <?php 
-require '../config/config.php';
+
+require 'DB.php';
 
 class Membre 
 {
@@ -38,6 +39,8 @@ class Membre
 
 	public function all()
 	{
+		$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT id, pseudo, nom, prenom, email, civilite, statut, date_enregistrement FROM membre');
 	    $req->execute();
 
@@ -50,6 +53,8 @@ class Membre
 
 	public function find($id)
 	{
+		$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('SELECT id, pseudo, nom, prenom, email, civilite, statut, date_enregistrement FROM membre WHERE id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
@@ -60,13 +65,49 @@ class Membre
 	    return $membre;
 	}
 
-	function update($id)
-	{
+	public function create(){
+		$db = new DB();
+		$db = $db->connect();
+		$sql = "INSERT INTO membre SET pseudo = :pseudo, mdp = :mdp, nom = :nom, prenom = :prenom, email = :email, civilite = :civilite, statut = :statut, date_enregistrement = :date_enregistrement";
+		$req = $db->prepare($sql);
+		$req->execute(array(
+			':pseudo' => $_POST['pseudo'],
+			':mdp' => password_hash($_POST['mdp'], PASSWORD_DEFAULT),
+			':nom' => $_POST['nom'],
+			':prenom' => $_POST['prenom'],
+			':email' => $_POST['email'],
+			':civilite' => $_POST['civilite'],
+			':statut' => $_POST['statut'],
+			':date_enregistrement' => date('Y-m-d H:i:s')
+		));
 
+	    return true;
 	}
 
-	function delete($id)
+	public function update($id)
 	{
+		$db = new DB();
+		$db = $db->connect();
+		$sql = "UPDATE membre SET pseudo = :pseudo, mdp = :mdp, nom = :nom, prenom = :prenom, email = :email, civilite = :civilite, statut = :statut WHERE id = :id";
+		$sth = $db->prepare($sql);
+		$sth->execute(array(
+			':pseudo' => $_POST['pseudo'],
+			':mdp' => password_hash($_POST['mdp'], PASSWORD_DEFAULT),
+			':nom' => $_POST['nom'],
+			':prenom' => $_POST['prenom'],
+			':email' => $_POST['email'],
+			':civilite' => $_POST['civilite'],
+			':statut' => $_POST['statut'],
+			':id' => $id
+		));
+
+		return true;
+	}
+
+	public function delete($id)
+	{
+		$db = new DB();
+		$db = $db->connect();
 		$req = $db->prepare('DELETE FROM membre WHERE id = ?');
 		$req->bindParam(':id', $id);
 		$req->execute();
@@ -149,6 +190,8 @@ class Membre
 
 	public function signUp()
 	{
+		$db = new DB();
+		$db = $db->connect();
 		$sql = "INSERT INTO membre SET pseudo = :pseudo, mdp = :mdp, nom = :nom, prenom = :prenom, email = :email, civilite = :civilite, date_enregistrement = :date_enregistrement";
 		$req = $db->prepare($sql);
 		$req->execute(array(
@@ -169,6 +212,8 @@ class Membre
 
 	public function signIn()
 	{
+		$db = new DB();
+		$db = $db->connect();
 	    $sql = "SELECT * FROM membre WHERE pseudo = :pseudo AND mdp = :mdp";
 	    $req = $db->prepare($sql);
 	    $req->execute(array(
