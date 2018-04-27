@@ -8,18 +8,29 @@ include ('../views/templates/_header.php');
 	</div>
 	<div class="row">
 		<?php foreach($produits as $produit) : ?>
-			<div class="col s8">
-				<h6><?= $produit->id_salle ?></h6>
-				<p>Prix : <?= $produit->prix ?> €</p>
-				<p>Etat : <?= $produit->etat ?></p>
-				<p>Date de départ : <?= $produit->date_depart ?></p>
-				<p>Date de d'arrivée : <?= $produit->date_arrivee ?></p>
-			</div>
-			<div class="col s4">
-				<div class="row">
-					<a href="BoutiqueCtrl.php?id=<?= $produit->id ?>&action=get" class="btn blue waves-effect waves-light">Détails
-						<i class="material-icons">details</i>
-					</a>
+			<div class="col s12">
+				<div class="col s4">
+					<img src="../views/salles/photo/<?= $produit->photo_salle ?>" class="responsive-img">
+				</div>
+				<div class="col s4">
+					<h6><?= $produit->titre_salle ?></h6>
+					<p>Date de départ : <?= $produit->date_depart ?></p>
+					<p>Date de d'arrivée : <?= $produit->date_arrivee ?></p>
+				</div>
+				<div class="col s4 center-align">
+					<div class="row">
+						<h5><?= $produit->prix ?> €</h5>
+					</div>
+					<div class="row">
+						<a href="BoutiqueCtrl.php?id=<?= $produit->id ?>&action=get" class="btn blue waves-effect waves-light">Détails
+							<i class="material-icons right">details</i>
+						</a>
+					</div>
+					<div class="row">
+						<a href="BoutiqueCtrl.php?id=<?= $produit->id ?>&action=buy" class="btn blue waves-effect waves-light">Commander
+							<i class="material-icons right">shopping_basket</i>
+						</a>
+					</div>
 				</div>
 			</div>
 		<?php endforeach; ?>
