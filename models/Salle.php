@@ -47,8 +47,7 @@ class Salle
 
 	public static function all()
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$req = $db->prepare('SELECT * FROM salle');
 	    $req->execute();
 
@@ -61,8 +60,7 @@ class Salle
 
 	public function find($id)
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$req = $db->prepare('SELECT * FROM salle WHERE id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
@@ -75,8 +73,7 @@ class Salle
 
 	public function create()
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$sql = "INSERT INTO salle SET titre = :titre, description = :description, photo = :photo, pays = :pays, ville = :ville, cp = :cp, capacite = :capacite, categorie = :categorie";
 		$req = $db->prepare($sql);
 		$req->execute(array(
@@ -95,8 +92,7 @@ class Salle
 
 	public function update($id)
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$sql = "UPDATE salle SET titre = :titre, description = :description, photo = :photo, pays = :pays, ville = :ville, cp = :cp, capacite = :capacite, categorie = :categorie WHERE id = :id";
 		$sth = $db->prepare($sql);
 		$sth->execute(array(
@@ -116,13 +112,12 @@ class Salle
 
 	public function delete($id)
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$req = $db->prepare('DELETE FROM salle WHERE id = ?');
 		$req->bindParam(':id', $id);
 		$req->execute();
 
-		if (find($id)) {
+		if (Salle::find($id)) {
 			echo "La suppression a échoué";
 			return false;
 		} else {
