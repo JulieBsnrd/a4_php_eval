@@ -16,7 +16,7 @@
         <ul id="membreDropdown" class="dropdown-content">
             <li><a href='profil.php'>Profil</a></li>
             <?php if(internauteEstConnecteEtEstAdmin()) : ?>
-            <li><a href='javascript:void(0);'>Admin</a></li>
+            <li><a href='adminHub.php'>Admin</a></li>
             <?php endif; ?>
             <li class="divider"></li>
             <li><a href='signIn.php?action=logOut'>Me déconnecter</a></li>
