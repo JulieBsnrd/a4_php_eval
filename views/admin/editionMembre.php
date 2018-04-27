@@ -5,18 +5,18 @@ include ('views/templates/_header.php');
 <div class="container">
 	<div class="row">
 		<div class="center-align">
-			<h5><?= $membre['pseudo'] ?></h5>
+			<h5><?= $membre->pseudo ?></h5>
 		</div>
 	</div>
 	<div class="row">
 		<form method="POST" action="adminMembres.php">
 			<input type="hidden" name="action" value="edit">
-			<input type="hidden" name="id" value="<?=  $membre['id'] ?>">
+			<input type="hidden" name="id" value="<?=  $membre->id ?>">
 			<div class="row">
 				<div class="col s6">
 					<p>
 						<label>
-				      		<input name="civilite" value="m" type="radio" <?= ($membre['civilite']) == "m" ? 'checked' : '' ?>/>
+				      		<input name="civilite" value="m" type="radio" <?= ($membre->civilite) == "m" ? 'checked' : '' ?>/>
 				      		<span>M</span>
 				    	</label>
 			    	</p>
@@ -24,7 +24,7 @@ include ('views/templates/_header.php');
 				<div class="col s6">
 					<p>
 						<label>
-				      		<input name="civilite" value="f" type="radio" <?= ($membre['civilite']) == "f" ? 'checked' : '' ?>/>
+				      		<input name="civilite" value="f" type="radio" <?= ($membre->civilite) == "f" ? 'checked' : '' ?>/>
 				      		<span>F</span>
 				    	</label>
 			    	</p>
@@ -32,17 +32,17 @@ include ('views/templates/_header.php');
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
-		          	<input id="prenom" type="text" class="validate" name="prenom" value="<?= $membre['prenom'] ?>">
+		          	<input id="prenom" type="text" class="validate" name="prenom" value="<?= $membre->prenom ?>">
 		          	<label for="prenom">Prénom</label>
 		        </div>
 		        <div class="input-field col s6">
-		          	<input id="nom" type="text" class="validate" name="nom" value="<?=  $membre['nom'] ?>">
+		          	<input id="nom" type="text" class="validate" name="nom" value="<?=  $membre->nom ?>">
 		          	<label for="nom">Nom</label>
 		        </div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
-					<input id="pseudo" type="text" class="validate" name="pseudo" value="<?= $membre['pseudo'] ?>">
+					<input id="pseudo" type="text" class="validate" name="pseudo" value="<?= $membre->pseudo ?>">
 			        <label for="pseudo">Pseudo</label>
 				</div>
 				<div class="col s12">
@@ -51,7 +51,7 @@ include ('views/templates/_header.php');
 				<div class="col s6">
 					<p>
 						<label>
-				      		<input name="statut" value="1" type="radio" <?= ($membre['statut']) == "1" ? 'checked' : '' ?>/>
+				      		<input name="statut" value="1" type="radio" <?= ($membre->statut) == "1" ? 'checked' : '' ?>/>
 				      		<span>Oui</span>
 				    	</label>
 			    	</p>
@@ -59,17 +59,17 @@ include ('views/templates/_header.php');
 				<div class="col s6">
 					<p>
 						<label>
-				      		<input name="statut" value="0" type="radio" <?= ($membre['statut']) == "0" ? 'checked' : '' ?>/>
+				      		<input name="statut" value="0" type="radio" <?= ($membre->statut) == "0" ? 'checked' : '' ?>/>
 				      		<span>Non</span>
 				    	</label>
 			    	</p>
 				</div>
 				<div class="input-field col s12">
-			        	<input id="email" type="email" class="validate" name="email" value="<?= $membre['email'] ?>">
+			        	<input id="email" type="email" class="validate" name="email" value="<?= $membre->email ?>">
 			        	<label for="email">Email</label>
 		        </div>
 				<div class="input-field col s12">
-		          	<input id="mdp" type="password" class="validate" name="mdp">
+		          	<input id="mdp" type="password" class="validate" name="mdp" value="<?= $membre->mdp ?>">
 		          	<label for="mdp">Mot de passe</label>
 		        </div>
 			</div>

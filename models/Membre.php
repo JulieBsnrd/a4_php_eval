@@ -5,28 +5,28 @@ require 'DB.php';
 class Membre 
 {
 	/** var int */
-	protected $id;
+	public $id;
 
 	/** var string */
-	protected $pseudo;
+	public $pseudo;
 
 	/** var string */
-	protected $mdp;
+	public $mdp;
 
 	/** var string */
-	protected $nom;
+	public $nom;
 
 	/** var string */
-	protected $prenom;
+	public $prenom;
 
 	/** var string */
-	protected $email;
+	public $email;
 
 	/** var string */
-	protected $civilite;
+	public $civilite;
 
 
-	public function __construct($id, $pseudo, $mdp = null, $nom, $prenom, $email, $civilite)
+	public function __construct($id, $pseudo, $mdp = null, $nom, $prenom, $email, $civilite, $statut, $dateEnregistrement)
 	{
       $this->id = $id;
       $this->pseudo = $pseudo;
@@ -35,12 +35,13 @@ class Membre
       $this->prenom = $prenom;
       $this->email = $email;
       $this->civilite = $civilite;
+      $this->statut = $statut;
+      $this->dateEnregistrement = $dateEnregistrement;
     }
 
-	public function all()
+	static public function all()
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$req = $db->prepare('SELECT id, pseudo, nom, prenom, email, civilite, statut, date_enregistrement FROM membre');
 	    $req->execute();
 
@@ -51,10 +52,9 @@ class Membre
 	    return $membres;
 	}
 
-	public function find($id)
+	static public function find($id)
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$req = $db->prepare('SELECT id, pseudo, nom, prenom, email, civilite, statut, date_enregistrement FROM membre WHERE id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
@@ -65,9 +65,8 @@ class Membre
 	    return $membre;
 	}
 
-	public function create(){
-		$db = new DB();
-		$db = $db->connect();
+	static public function create(){
+		$db = DB::getInstance();
 		$sql = "INSERT INTO membre SET pseudo = :pseudo, mdp = :mdp, nom = :nom, prenom = :prenom, email = :email, civilite = :civilite, statut = :statut, date_enregistrement = :date_enregistrement";
 		$req = $db->prepare($sql);
 		$req->execute(array(
@@ -84,10 +83,9 @@ class Membre
 	    return true;
 	}
 
-	public function update($id)
+	static public function update($id)
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$sql = "UPDATE membre SET pseudo = :pseudo, mdp = :mdp, nom = :nom, prenom = :prenom, email = :email, civilite = :civilite, statut = :statut WHERE id = :id";
 		$sth = $db->prepare($sql);
 		$sth->execute(array(
@@ -104,15 +102,14 @@ class Membre
 		return true;
 	}
 
-	public function delete($id)
+	static public function delete($id)
 	{
-		$db = new DB();
-		$db = $db->connect();
-		$req = $db->prepare('DELETE FROM membre WHERE id = ?');
+		$db = DB::getInstance();
+		$req = $db->prepare('DELETE FROM membre WHERE id = :id');
 		$req->bindParam(':id', $id);
 		$req->execute();
 
-		if (find($id)) {
+		if(Membre::find($id)) {
 			echo "La suppression a échoué";
 			return false;
 		} else {
@@ -121,16 +118,7 @@ class Membre
 		}
 	}
 
-	public function setAdmin($id)
-	{
-		/*$sql = "UPDATE membre SET statut=:statut WHERE id=:id";
-		$sth = $db->prepare($sql);
-		$sth->bindParam("id", $input['id']);
-		$sth->bindParam("statut", $input['statut']);
-		$sth->execute();*/
-	}
-
-	public function validatorSignUp()
+	static public function validatorSignUp()
 	{
 		if(empty($_POST['pseudo']))
 			return 'Veuillez insérer un pseudo';
@@ -170,7 +158,7 @@ class Membre
 		else return false;
 	}
 
-	public function validatorSignIn()
+	static public function validatorSignIn()
 	{
 	    if(empty($_POST['pseudo']))
 	        return 'Veuillez insérer un pseudo';
@@ -188,10 +176,9 @@ class Membre
 	    else return false;
 	}
 
-	public function signUp()
+	static public function signUp()
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 		$sql = "INSERT INTO membre SET pseudo = :pseudo, mdp = :mdp, nom = :nom, prenom = :prenom, email = :email, civilite = :civilite, date_enregistrement = :date_enregistrement";
 		$req = $db->prepare($sql);
 		$req->execute(array(
@@ -210,10 +197,9 @@ class Membre
 	    }
 	}
 
-	public function signIn()
+	static public function signIn()
 	{
-		$db = new DB();
-		$db = $db->connect();
+		$db = DB::getInstance();
 	    $sql = "SELECT * FROM membre WHERE pseudo = :pseudo AND mdp = :mdp";
 	    $req = $db->prepare($sql);
 	    $req->execute(array(
