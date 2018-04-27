@@ -5,7 +5,7 @@ include ('views/templates/_header.php');
 <div class="container">
 	<div class="row">
 		<h5>Gestions des Salles</h5>
-		<a href="adminSalles.php?path=create" class="btn blue">Ajouter une salle</a>
+		<a href="AdminSalleCtrl.php?path=create" class="btn blue">Ajouter une salle</a>
 	</div>
 	<div class="row">
 		<?php foreach($salles as $salle) : ?>
@@ -24,11 +24,11 @@ include ('views/templates/_header.php');
 			</div>
 			<div class="col s4">
 				<div class="row">
-					<a href="adminSalles.php?id=<?= $salle['id'] ?>&action=get" class="btn green waves-effect waves-light">Editer
+					<a href="AdminSalleCtrl.php?id=<?= $salle['id'] ?>&action=get" class="btn green waves-effect waves-light">Editer
 						<i class="material-icons right">mode_edit</i>
 					</a>
 				</div>
-				<form method="GET" action="adminSalles.php" class="row">
+				<form method="GET" action="AdminSalleCtrl.php" class="row">
 					<input type="hidden" name="action" value="delete">
 					<input type="hidden" name="id" value="<?php echo $salle['id'] ?>">
 					<button class="btn red waves-effect waves-light" type="submit">Supprimer

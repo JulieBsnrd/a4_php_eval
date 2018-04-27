@@ -2,10 +2,25 @@
 include ('views/templates/_header.php');
 ?>
 
-    <div class="container">
-        <div class="row">
-            <div class="center-align">
-                <h5>Ajouter une salle</h5>
+<div class="container">
+	<div class="row">
+		<div class="center-align">
+			<h5>Ajouter une salle</h5>
+		</div>
+	</div>
+	<div class="row">
+		<form method="POST" action="AdminSalleCtrl.php">
+			<input type="hidden" name="action" value="create">
+
+			<div class="row">
+			<div class="input-field col s12">
+					<input id="titre" type="text" class="validate" name="titre">
+			        <label for="titre">Titre</label>
+				</div>
+                <div class="input-field col s12">
+                    <input id="description" type="text" class="validate" name="description">
+                    <label for="description">Description</label>
+                </div>
             </div>
         </div>
         <div class="row">

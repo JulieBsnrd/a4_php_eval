@@ -1,18 +1,18 @@
 <?php
 session_start();
 
-require 'config/config.php';
-require 'models/SallesModel.php';
+require '../../config/config.php';
+require '../../models/SallesModel.php';
 
 if($_SESSION['membre']['statut'] != "1"){
-	header("location:signIn.php");
+	header("location:SignInCtrl.php");
 }
 
 if(!empty($_GET)){
 	if(isset($_GET['action']) && $_GET['action'] == "delete"){
 		if(isset($_GET['id']) && !empty($_GET['id'])){
 			$salle = delete($db, $_GET['id']);
-			header('Location: AdminSalles.php');
+			header('Location: AdminSalleCtrl.php');
 		}
 	}
 }
@@ -29,7 +29,7 @@ if(!empty($_POST)){
             $capacite = $_POST['capacite'];
             $categorie = $_POST['categorie'];
             $salle = update($db, $_POST['id']);
-			header('Location: AdminSalles.php');
+			header('Location: AdminSalleCtrl.php');
 		}
 	}
 	if(isset($_POST['action']) && $_POST['action'] == "create"){
@@ -46,11 +46,11 @@ if(!empty($_POST)){
         if(isset($_FILES['avatar']) && $_FILES['avatar']['error']==0)
         {
 
-            header('Location: profil.php');
+            header('Location: ProfilCtrl.php');
 
         }
         else{
-            header('Location: signIn.php');
+            header('Location: SignInCtrl.php');
 
 
         }
@@ -61,13 +61,13 @@ if(!empty($_POST)){
 
 if(isset($_GET['id']) && !empty($_GET['id']) && !empty($_GET['action']) && $_GET['action'] == "get"){
 	$salle = getOne($db, $_GET['id']);
-	require 'views/admin/editionSalle.php';
+	include '../../views/admin/editionSalle.php';
 }
 elseif(isset($_GET['path']) && $_GET['path'] == "create"){
-	require 'views/admin/ajoutSalle.php';
+	include '../../views/admin/ajoutSalle.php';
 }
 else{
 	$salles = getAll($db);
-	require 'views/admin/gestionSalles.php';
+	include '../../views/admin/gestionSalles.php';
 }
 ?>
