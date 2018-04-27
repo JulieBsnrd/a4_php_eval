@@ -22,8 +22,8 @@ include ('../../views/templates/_header.php');
 		        		<td>
 		        			<?php
 		        				foreach($membres as $membre){
-		        					if($membre['id'] == $commande->id_membre){
-		        						echo $membre['email'];
+		        					if($membre->id == $commande->id_membre){
+		        						echo $membre->email;
 		        					}
 		        				}
 		        			?>
@@ -31,9 +31,9 @@ include ('../../views/templates/_header.php');
 		        		<td>
 		        			<?php
 		        				foreach($produits as $produit){
-		        					if($produit['id'] == $commande->id_produit){
-		        						echo '<div class="row center-align">'.$produit['titre'].'</div>';
-		        						echo '<img src="../../views/salles/photo/'.$produit['photo'].'" class="row center-align" width="200">';
+		        					if($produit->id == $commande->id_produit){
+		        						echo '<div class="row center-align">'.$produit->titre_salle.'</div>';
+		        						echo '<img src="../../views/salles/photo/'.$produit->photo_salle.'" class="row center-align" width="200">';
 		        					}
 		        				}
 		        			?>							
@@ -41,8 +41,8 @@ include ('../../views/templates/_header.php');
 		        		<td>
 		        			<?php
 		        				foreach($produits as $produit){
-		        					if($produit['id'] == $commande->id_produit){
-		        						echo '<div class="row center-align">'.$produit['prix'].' €</div>';
+		        					if($produit->id == $commande->id_produit){
+		        						echo '<div class="row center-align">'.$produit->prix.' €</div>';
 		        					}
 		        				}
 		        			?>	

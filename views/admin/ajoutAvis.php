@@ -16,7 +16,7 @@ include ('../../views/templates/_header.php');
 					<select name="id_membre" class="browser-default">
 						<option value="" disabled selected>Membre</option>
 						<?php foreach ($membres as $membre) : ?>
-							<option value="<?= $membre['id'] ?>"><?= $membre['email'] ?></option>
+							<option value="<?= $membre->id ?>"><?= $membre->email ?></option>
 						<?php endforeach; ?>
 					</select>
 				</div>
@@ -24,7 +24,7 @@ include ('../../views/templates/_header.php');
 					<select name="id_salle" class="browser-default">
 						<option value="" disabled selected>Salle</option>
 						<?php foreach ($salles as $salle) : ?>
-							<option value="<?= $salle['id'] ?>"><?= $salle['titre'] ?></option>
+							<option value="<?= $salle->id ?>"><?= $salle->titre ?></option>
 						<?php endforeach; ?>
 					</select>
 				</div>

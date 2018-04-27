@@ -1,21 +1,21 @@
 <?php
 //session_start();
 
-require '../config/config.php';
 require '../models/functions.fn.php';
-require '../models/MembresModel.php';
+require '../models/Membre.php';
 
 //core logic
 if(!empty($_POST)){
-    $error = validatorSignIn();
+    $error = Membre::validatorSignIn();
 
     if(!$error){
-        $connect = signIn($db);
+        $connect = Membre::signIn();
         //var_dump($connect);
         //print_r($connect);
 
         if($connect){
             $quote = ["class" => 'green', "content" => 'Vous êtes bien connecté.'];
+            header('Location: BoutiqueCtrl.php');
 
         }
         else{
@@ -26,6 +26,7 @@ if(!empty($_POST)){
 elseif(isset($_GET['action']) && $_GET['action'] == "logOut")
 {
     session_destroy();
+    header('Location: SignInCtrl.php');
 }
 
 include '../views/signIn.php';

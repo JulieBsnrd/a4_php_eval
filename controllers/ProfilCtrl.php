@@ -6,11 +6,12 @@
  * Time: 14:43
  */
 require '../models/functions.fn.php';
-
+require '../models/Produit.php';
+require '../models/Commande.php';
 //--------------------------------- TRAITEMENTS PHP ---------------------------------//
 if(!internauteEstConnecte()) header("location:SignInCtrl.php");
-//debug($_SESSION);
 
+$commandes = Commande::findAllByUser($_SESSION['membre']['id']);
 //--------------------------------- AFFICHAGE HTML ---------------------------------//
 require '../views/profil.php';
 

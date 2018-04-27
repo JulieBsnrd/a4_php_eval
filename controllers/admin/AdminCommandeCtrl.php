@@ -2,6 +2,8 @@
 session_start();
 
 require '../../models/Commande.php';
+require '../../models/Membre.php';
+require '../../models/Produit.php';
 
 if($_SESSION['membre']['statut'] != "1"){
     header("location:SignInCtrl.php");
@@ -31,19 +33,19 @@ if(!empty($_POST)){
 
 if(isset($_GET['id']) && !empty($_GET['id']) && !empty($_GET['action']) && $_GET['action'] == "get"){
 	$commande = Commande::find($_GET['id']);
-	$membres = Commande::getMembres();
-	$produits = Commande::getProduits();
+	$membres = Membre::all();
+	$produits = Produit::all();
 	require '../../views/admin/editionCommande.php';
 }
 elseif(isset($_GET['path']) && $_GET['path'] == "create"){
-	$membres = Commande::getMembres();
-	$produits = Commande::getProduits();
+	$membres = Membre::all();
+	$produits = Produit::all();
 	require '../../views/admin/ajoutCommande.php';
 }
 else{
 	$commandes = Commande::all();
-	$membres = Commande::getMembres();
-	$produits = Commande::getProduits();
+	$membres = Membre::all();
+	$produits = Produit::all();
 	require '../../views/admin/gestionCommandes.php';
 }
 

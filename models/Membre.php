@@ -1,6 +1,6 @@
 <?php 
 
-require 'DB.php';
+require_once 'DB.php';
 
 class Membre 
 {
@@ -200,14 +200,27 @@ class Membre
 	static public function signIn()
 	{
 		$db = DB::getInstance();
-	    $sql = "SELECT * FROM membre WHERE pseudo = :pseudo AND mdp = :mdp";
+	    $sql = "SELECT * FROM membre WHERE pseudo = :pseudo";
 	    $req = $db->prepare($sql);
 	    $req->execute(array(
-	        ':pseudo' => $_POST['pseudo'],
-	        ':mdp' => password_hash($_POST['mdp'], PASSWORD_DEFAULT)
+	        ':pseudo' => $_POST['pseudo']
 	    ));
-	    if ($result = $req->fetch()) {
-	        return true;
+	    if ($result = $req->fetch(PDO::FETCH_ASSOC)) {
+	    	//azerty 123456789
+	        if(password_verify($_POST['mdp'], $result['mdp']))
+	        {
+	            foreach ($result as $key => $value) {
+	                if ( $key != 'mdp' ) {
+	                    $_SESSION['membre'][$key] = $value;
+	                }
+	            }
+	            //Session::set('user', $user_data);
+	            return true;
+	        }
+	        else
+	        {
+	            return false;
+	        }
 	    } else {
 	        return false;
 	    }

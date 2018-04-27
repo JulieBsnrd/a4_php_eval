@@ -38,7 +38,7 @@ include ('../../views/templates/_header.php');
 			        <div class="input-field col s12">
 						<select name="id_salle" class="browser-default">
 							<?php foreach ($salles as $salle) : ?>
-								<option value="<?= $salle['id'] ?>" <?= $produit->id_salle == $salle['id'] ? 'selected' : '' ?>><?= $salle['titre'] ?></option>
+								<option value="<?= $salle->id ?>" <?= $produit->id_salle == $salle->id ? 'selected' : '' ?>><?= $salle->titre ?></option>
 							<?php endforeach; ?>
 						</select>
 					</div>

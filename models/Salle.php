@@ -1,6 +1,6 @@
 <?php 
 
-require 'DB.php';
+require_once 'DB.php';
 
 class Salle
 {

@@ -4,8 +4,19 @@ include ('../views/templates/_header.php');
 
 <div class="container">
 	<div class="row">
+		<a href="BoutiqueCtrl.php" class="waves-effect waves-light btn blue"><i class="material-icons left">arrow_back</i>Retour</a>
+	</div>
+	<div class="row">
 		<div class="center-align">
-			<h5><?= $produit->id_salle ?></h5>
+			<h5><?= $produit->titre_salle ?></h5>
+		</div>
+		<div class="col s12">
+			<img src="../views/salles/photo/<?= $produit->photo_salle ?>" class="responsive-img">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s12">
+			<a href="BoutiqueCtrl.php?id=<?= $produit->id ?>&action=buy" class="btn btn-block blue waves-effect waves-light">Commander</a>
 		</div>
 	</div>
 	<div class="row">

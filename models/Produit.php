@@ -1,6 +1,6 @@
 <?php
 
-require 'DB.php';
+require_once 'DB.php';
 
 class Produit 
 {
@@ -118,13 +118,6 @@ class Produit
 			echo "Le produit a bien été supprimé";
 			return true;
 		}
-	}
-
-	static public function getSalles(){
-		$db = DB::getInstance();
-		$req = $db->prepare('SELECT * FROM salle');
-	    $req->execute();
-	    return $req->fetchAll();
 	}
 }
 

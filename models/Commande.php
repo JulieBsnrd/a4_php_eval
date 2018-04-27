@@ -1,6 +1,6 @@
 <?php
 
-require 'DB.php';
+require_once 'DB.php';
 
 class Commande
 {
@@ -64,6 +64,8 @@ class Commande
 	    $req->bindParam(':id_membre', $id_membre);
 	    $req->execute();
 
+	    $commandes;
+
 	    foreach($req->fetchAll() as $commande) {
 	    	$commandes[] = new Commande($commande['id'], $commande['id_membre'], $commande['id_produit'], $commande['date_enregistrement']);
 	    }
@@ -115,20 +117,6 @@ class Commande
 			echo "La commande a bien été supprimée";
 			return true;
 		}
-    }
-
-    public static function getMembres(){
-    	$db = DB::getInstance();
-		$req = $db->prepare('SELECT id, pseudo, nom, prenom, email, civilite, statut, date_enregistrement FROM membre');
-	    $req->execute();
-	    return $req->fetchAll();
-    }
-
-    public static function getProduits(){
-    	$db = DB::getInstance();
-		$req = $db->prepare('SELECT produit.id, produit.id_salle, produit.date_arrivee, produit.date_depart, produit.prix, produit.etat, salle.titre, salle.photo FROM produit INNER JOIN salle ON produit.id_salle = salle.id');
-	    $req->execute();
-	    return $req->fetchAll();
     }
 }
 

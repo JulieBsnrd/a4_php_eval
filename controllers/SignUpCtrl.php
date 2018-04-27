@@ -1,18 +1,18 @@
 <?php
 session_start();
 
-require '../config/config.php';
 require '../models/functions.fn.php';
-require '../models/MembresModel.php';
+require '../models/Membre.php';
 
 //core logic
 if(!empty($_POST)){
-	$error = validatorSignUp();
+	$error = Membre::validatorSignUp();
 
 	if(!$error){
-		$success = signUp($db);
+		$success = Membre::signUp();
 		if($success){
 			$quote = ["class" => 'green', "content" => 'Utilisateur ajouté avec succès'];
+			header('Location: SignInCtrl.php');
 		}
 	}
 	/*if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['username'])){

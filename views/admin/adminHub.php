@@ -6,7 +6,7 @@ include ('../../views/templates/_header.php');
     <div class="row">
         <div class="col s4">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../views/css/img/member.jpg" alt="Card image cap">
+                <img class="card-img-top responsive-img" src="../../views/css/img/member.jpg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Gestion des membres</h5>
                     <p class="card-text">Cliquez ici si vous souhaitez ajouter, voir, modifier ou supprimer un membre.</p>
@@ -16,7 +16,7 @@ include ('../../views/templates/_header.php');
         </div>
         <div class="col s4">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../views/css/img/order.jpg" alt="Card image cap">
+                <img class="card-img-top responsive-img" src="../../views/css/img/order.jpg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Gestion des commandes</h5>
                     <p class="card-text">Cliquez ici si vous souhaitez ajouter, voir, modifier ou supprimer une commande.</p>
@@ -26,7 +26,7 @@ include ('../../views/templates/_header.php');
         </div>
         <div class="col s4">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../views/css/img/product.jpg" alt="Card image cap">
+                <img class="card-img-top responsive-img" src="../../views/css/img/product.jpg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Gestion des produits</h5>
                     <p class="card-text">Cliquez ici si vous souhaitez ajouter, voir, modifier ou supprimer un produit.</p>
@@ -36,7 +36,7 @@ include ('../../views/templates/_header.php');
         </div>
         <div class="col s4">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="views/css/img/product.jpg" alt="Card image cap">
+                <img class="card-img-top responsive-img" src="views/css/img/product.jpg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Gestion des salles</h5>
                     <p class="card-text">Cliquez ici si vous souhaitez ajouter, voir, modifier ou supprimer une salle.</p>

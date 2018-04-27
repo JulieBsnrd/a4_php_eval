@@ -17,7 +17,7 @@ include ('../../views/templates/_header.php');
 					<select name="id_membre" class="browser-default">
 						<option value="" disabled selected>Membre</option>
 						<?php foreach ($membres as $membre) : ?>
-							<option value="<?= $membre['id'] ?>" <?= $membre['id'] == $commande->id_membre ? 'selected' : '' ?>><?= $membre['email'] ?></option>
+							<option value="<?= $membre->id ?>" <?= $membre->id == $commande->id_membre ? 'selected' : '' ?>><?= $membre->email ?></option>
 						<?php endforeach; ?>
 					</select>
 				</div>
@@ -25,7 +25,7 @@ include ('../../views/templates/_header.php');
 					<select name="id_produit" class="browser-default">
 						<option value="" disabled selected>Produit</option>
 						<?php foreach ($produits as $produit) : ?>
-							<option value="<?= $produit['id'] ?>" <?= $produit['id'] == $commande->id_produit ? 'selected' : '' ?>><?= $produit['titre'] ?></option>
+							<option value="<?= $produit->id ?>" <?= $produit->id == $commande->id_produit ? 'selected' : '' ?>><?= $produit->titre_salle ?></option>
 						<?php endforeach; ?>
 					</select>
 				</div>

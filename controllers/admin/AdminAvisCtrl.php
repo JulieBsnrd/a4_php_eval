@@ -2,6 +2,8 @@
 session_start();
 
 require '../../models/Avis.php';
+require '../../models/Membre.php';
+require '../../models/Salle.php';
 
 if($_SESSION['membre']['statut'] != "1"){
 	header("location: SignInCtrl.php");
@@ -34,19 +36,19 @@ if(!empty($_POST)){
 
 if(isset($_GET['id']) && !empty($_GET['id']) && !empty($_GET['action']) && $_GET['action'] == "get"){
 	$avis = Avis::find($_GET['id']);
-	$membres = Avis::getMembres();
-	$salles = Avis::getSalles();
+	$membres = Membre::all();
+	$salles = Salle::all();
 	require '../../views/admin/editionAvis.php';
 }
 elseif(isset($_GET['path']) && $_GET['path'] == "create"){
-	$membres = Avis::getMembres();
-	$salles = Avis::getSalles();
+	$membres = Membre::all();
+	$salles = Salle::all();
 	require '../../views/admin/ajoutAvis.php';
 }
 else{
 	$avis = Avis::all();
-	$membres = Avis::getMembres();
-	$salles = Avis::getSalles();
+	$membres = Membre::all();
+	$salles = Salle::all();
 	require '../../views/admin/gestionAvis.php';
 }
 

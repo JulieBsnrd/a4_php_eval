@@ -22,8 +22,8 @@ include ('../../views/templates/_header.php');
 		        		<td>
 		        			<?php
 		        				foreach($membres as $membre){
-		        					if($membre['id'] == $avi->id_membre){
-		        						echo $membre['email'];
+		        					if($membre->id == $avi->id_membre){
+		        						echo $membre->email;
 		        					}
 		        				}
 		        			?>
@@ -31,9 +31,9 @@ include ('../../views/templates/_header.php');
 		        		<td>
 		        			<?php
 		        				foreach($salles as $salle){
-		        					if($salle['id'] == $avi->id_salle){
-		        						echo '<div class="row center-align">'.$salle['titre'].'</div>';
-		        						echo '<img src="../../views/salles/photo/'.$salle['photo'].'" class="row center-align" width="200">';
+		        					if($salle->id == $avi->id_salle){
+		        						echo '<div class="row center-align">'.$salle->titre.'</div>';
+		        						echo '<img src="../../views/salles/photo/'.$salle->photo.'" class="row center-align" width="200">';
 		        					}
 		        				}
 		        			?>							

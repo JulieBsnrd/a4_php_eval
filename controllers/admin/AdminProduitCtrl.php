@@ -2,6 +2,7 @@
 session_start();
 
 require '../../models/Produit.php';
+require '../../models/Salle.php';
 
 if($_SESSION['membre']['statut'] != "1"){
 	header("location:SignInCtrl.php");
@@ -39,10 +40,10 @@ if(!empty($_POST)){
 
 if (isset($_GET['id']) && !empty($_GET['id']) && !empty($_GET['action']) && $_GET['action'] == "get") {
 	$produit = Produit::find($_GET['id']);
-	$salles = Produit::getSalles();
+	$salles = Salle::all();
 	include '../../views/admin/editionProduit.php';
 } elseif (isset($_GET['path']) && $_GET['path'] == "create"){
-	$salles = Produit::getSalles();
+	$salles = Salle::all();
 	include '../../views/admin/ajoutProduit.php';
 } else {
 	$produits = Produit::all();

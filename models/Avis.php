@@ -1,6 +1,6 @@
 <?php
 
-require 'DB.php';
+require_once 'DB.php';
 
 class Avis
 {
@@ -122,20 +122,6 @@ class Avis
 			return true;
 		}
     }
-
-    public static function getMembres(){
-    	$db = DB::getInstance();
-		$req = $db->prepare('SELECT id, pseudo, nom, prenom, email, civilite, statut, date_enregistrement FROM membre');
-	    $req->execute();
-	    return $req->fetchAll();
-    }
-
-    static public function getSalles(){
-		$db = DB::getInstance();
-		$req = $db->prepare('SELECT * FROM salle');
-	    $req->execute();
-	    return $req->fetchAll();
-	}
 }
 
 ?>
