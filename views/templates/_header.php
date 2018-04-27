@@ -7,13 +7,8 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="views/css/style.css">
-<<<<<<< HEAD
-
     <!--<link rel="stylesheet" type="text/css" href="views/css/lokisalle.min.css">-->
-=======
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
-    <link rel="stylesheet" type="text/css" href="views/css/lokisalle.min.css">
->>>>>>> 73c5aca6213fdcb8181ca0312ede041cdaed295f
 </head>
 <body>
 	<header>
