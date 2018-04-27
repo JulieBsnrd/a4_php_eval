@@ -34,6 +34,16 @@ include ('views/templates/_header.php');
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="views/css/img/product.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Gestion des salles</h5>
+                    <p class="card-text">Cliquez ici si vous souhaitez ajouter, voir, modifier ou supprimer une salle.</p>
+                    <a href="adminSalles.php" class="btn btn-primary">Gérer les salles</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
