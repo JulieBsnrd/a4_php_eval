@@ -1,36 +1,38 @@
 <?php
-include ('views/templates/_header.php');
+include ('../../views/templates/_header.php');
 ?>
 
 <div class="container">
 	<div class="row">
 		<h5>Gestions des Salles</h5>
-		<a href="adminSalles.php?path=create" class="btn blue">Ajouter une salle</a>
+		<a href="AdminSalleCtrl.php?path=create" class="btn blue">Ajouter une salle</a>
 	</div>
 	<div class="row">
 		<?php foreach($salles as $salle) : ?>
+			<div class="col s4">
+				<img src="../../views/salles/photo/<?= $salle->photo ?>" class="responsive-img">
+			</div>
 			<div class="col s8">
-				<h6><?= $salle['id'] ?></h6>
-				<p>Titre : <?= $salle['titre'] ?></p>
-				<p>Description : <?= $salle['description'] ?></p>
-                <p>Adresse : <?= $produit['adresse'] ?></p>
-                <p>Code postal : <?= $produit['cp'] ?></p>
-                <p>Ville : <?= $produit['ville'] ?></p>
-                <p>Pays : <?= $produit['pays'] ?></p>
-                <p>Capacité : <?= $produit['capacite'] ?></p>
-                <p>Catégorie : <?= $produit['catgorie'] ?></p>
+				<p>Titre : <?= $salle->titre ?></p>
+				<p>Description : <?= $salle->description ?></p>
+                <p>Adresse : <?= $salle->adresse ?></p>
+                <p>Code postal : <?= $salle->cp ?></p>
+                <p>Ville : <?= $salle->ville ?></p>
+                <p>Pays : <?= $salle->pays ?></p>
+                <p>Capacité : <?= $salle->capacite ?></p>
+                <p>Catégorie : <?= $salle->categorie ?></p>
 
                 <!-- image -->
 			</div>
-			<div class="col s4">
-				<div class="row">
-					<a href="adminSalles.php?id=<?= $salle['id'] ?>&action=get" class="btn green waves-effect waves-light">Editer
+			<div class="col s12">
+				<div class="col s6">
+					<a href="AdminSalleCtrl.php?id=<?= $salle->id ?>&action=get" class="btn green waves-effect waves-light">Editer
 						<i class="material-icons right">mode_edit</i>
 					</a>
 				</div>
-				<form method="GET" action="adminSalles.php" class="row">
+				<form method="GET" action="AdminSalleCtrl.php" class="col s6">
 					<input type="hidden" name="action" value="delete">
-					<input type="hidden" name="id" value="<?php echo $salle['id'] ?>">
+					<input type="hidden" name="id" value="<?php echo $salle->id ?>">
 					<button class="btn red waves-effect waves-light" type="submit">Supprimer
 						<i class="material-icons right">delete</i>
 					</button>
@@ -41,5 +43,5 @@ include ('views/templates/_header.php');
 </div>
 
 <?php
-include ('views/templates/_footer.php');
+include ('../../views/templates/_footer.php');
 ?>

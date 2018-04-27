@@ -22,8 +22,14 @@ class Produit
 	/** var string */
 	public $etat;
 
+	/** var string */
+	public $titre_salle;
 
-	public function __construct($id, $id_salle, $date_arrivee, $date_depart, $prix, $etat) 
+	/** var string */
+	public $photo_salle;
+
+
+	public function __construct($id, $id_salle, $date_arrivee, $date_depart, $prix, $etat, $titre_salle = null, $photo_salle = null) 
 	{
 		$dateDepart = DateTime::createFromFormat('Y-m-d H:i:s', $date_depart);
 		$dateArrivee = DateTime::createFromFormat('Y-m-d H:i:s', $date_arrivee);
@@ -35,16 +41,18 @@ class Produit
 		}
 		$this->prix = $prix;
 		$this->etat = $etat;
+		$this->titre_salle = $titre_salle;
+		$this->photo_salle = $photo_salle;
     }
 
     static public function all()
     {
     	$db = DB::getInstance();
-		$req = $db->prepare('SELECT * FROM produit');
+		$req = $db->prepare('SELECT * FROM produit INNER JOIN salle ON produit.id_salle = salle.id');
 	    $req->execute();
 
-	    foreach($req->fetchAll() as $produit) {
-	    	$produits[] = new Produit($produit['id'], $produit['id_salle'], $produit['date_arrivee'], $produit['date_depart'], $produit['prix'], $produit['etat']);
+	    foreach($req->fetchAll() as $produit){
+	    	$produits[] = new Produit($produit['id'], $produit['id_salle'], $produit['date_arrivee'], $produit['date_depart'], $produit['prix'], $produit['etat'], $produit['titre'], $produit['photo']);
 	    }
 
 	    return $produits;
@@ -53,12 +61,12 @@ class Produit
 	static public function find($id)
 	{
 		$db = DB::getInstance();
-		$req = $db->prepare('SELECT * FROM produit WHERE id = :id');
+		$req = $db->prepare('SELECT * FROM produit INNER JOIN salle ON produit.id_salle = salle.id WHERE id = :id');
 	    $req->bindParam(':id', $id);
 	    $req->execute();
 
 	    $produit = $req->fetch();
-	    $produit = new Produit($produit['id'], $produit['id_salle'], $produit['date_arrivee'], $produit['date_depart'], $produit['prix'], $produit['etat']);
+	    $produit = new Produit($produit['id'], $produit['id_salle'], $produit['date_arrivee'], $produit['date_depart'], $produit['prix'], $produit['etat'], $produit['titre'], $produit['photo']);
 
 	    return $produit;
     }

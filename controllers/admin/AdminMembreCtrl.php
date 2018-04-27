@@ -4,7 +4,7 @@ session_start();
 require '../../models/Membre.php';
 
 if($_SESSION['membre']['statut'] != "1"){
-	header("location:SignInCtrl.php");
+	header("location: SignInCtrl.php");
 }
 
 if(!empty($_GET)){
@@ -32,14 +32,16 @@ if(!empty($_POST)){
 //TODO add validator for each input
 //Should throw away if not admin
 
-if (isset($_GET['id']) && !empty($_GET['id']) && !empty($_GET['action']) && $_GET['action'] == "get") {
+if(isset($_GET['id']) && !empty($_GET['id']) && !empty($_GET['action']) && $_GET['action'] == "get"){
 	$membre = Membre::find($_GET['id']);
-	include '../../views/admin/editionMembre.php';
-} elseif (isset($_GET['path']) && $_GET['path'] == "create"){
-	include '../../views/admin/ajoutMembre.php';
-} else {
+	require '../../views/admin/editionMembre.php';
+}
+elseif(isset($_GET['path']) && $_GET['path'] == "create"){
+	require '../../views/admin/ajoutMembre.php';
+}
+else{
 	$membres = Membre::all();
-	include '../../views/admin/gestionMembres.php';
+	require '../../views/admin/gestionMembres.php';
 }
 
 ?>

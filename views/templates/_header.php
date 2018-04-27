@@ -11,7 +11,7 @@ require_once "$root/a4_php_eval/models/functions.fn.php";
 	<meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-	<link rel="stylesheet" type="text/css" href="views/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../views/css/style.css">
     <!--<link rel="stylesheet" type="text/css" href="views/css/lokisalle.min.css">-->
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> -->
 </head>
